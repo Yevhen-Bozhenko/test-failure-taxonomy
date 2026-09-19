@@ -1,12 +1,5 @@
 # Taxonomy
 
-This file is the contribution. Everything under `src/` exists only to check that these rules
-hold up when two different LLMs apply them.
-
-The five class names below are the ones declared in
-`src/main/java/io/github/yevhenbozhenko/testfailure/FailureClass.java`. If a name changes here,
-change it there too; the prompt template and the scorer both read the enum, not this file.
-
 ## Evidence
 
 The decision rules below are written against the evidence a triaging engineer actually has:
