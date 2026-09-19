@@ -1,0 +1,13 @@
+target/
+.env
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# results/ is regenerated from raw/ and is not the record of an experiment; raw/ is, and is tracked.
+results/
