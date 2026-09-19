@@ -1,0 +1,16 @@
+{
+  "id": "order-status-500-on-valid-payload",
+  "trueClass": "PRODUCT_DEFECT",
+  "evidence": {
+    "errorMessage": "AssertionError: expected: <200> but was: <500>",
+    "stackTrace": "java.lang.NullPointerException: Cannot invoke \"com.example.orders.Shipment.getCarrier()\" because \"shipment\" is null\n\tat com.example.orders.OrderStatusAssembler.assemble(OrderStatusAssembler.java:64)\n\tat com.example.orders.OrderStatusController.getStatus(OrderStatusController.java:38)\n\tat jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\n\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)",
+    "logs": [
+      "11:02:44.901 INFO  order-service  GET /api/v1/orders/ord_5512/status customerId=cus_qa_007",
+      "11:02:44.903 DEBUG order-service  order ord_5512 state=PAID shipment=null (dispatch pending, valid for PAID)",
+      "11:02:44.905 ERROR order-service  unhandled exception assembling status for ord_5512 -> 500"
+    ],
+    "httpRequest": "GET /api/v1/orders/ord_5512/status HTTP/1.1\nHost: staging-api.example.internal\nAuthorization: Bearer <redacted>",
+    "httpResponse": "HTTP/1.1 500 Internal Server Error\nContent-Type: application/json\n\n{\"error\":\"Internal Server Error\",\"traceId\":\"c41ba9e2\"}",
+    "testCode": "@Test\nvoid statusIsReadableForAPaidOrder() {\n    String orderId = api.createPaidOrder(\"cus_qa_007\").id();\n    Response response = api.get(\"/api/v1/orders/\" + orderId + \"/status\");\n    assertEquals(200, response.statusCode());\n}"
+  }
+}

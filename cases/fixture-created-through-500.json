@@ -1,0 +1,16 @@
+{
+  "id": "fixture-created-through-500",
+  "trueClass": "TEST_CODE_DEFECT",
+  "evidence": {
+    "errorMessage": "AssertionError: expected: <200> but was: <404>",
+    "logs": [
+      "13:40:18.204 ERROR order-service  POST /api/v1/orders -> 500 traceId=7f20a1 (inventory lookup timed out)",
+      "13:40:18.207 INFO  test-harness   setup createOrder returned status=500 body={\"error\":\"Internal Server Error\"}",
+      "13:40:18.209 INFO  test-harness   proceeding with orderId=null",
+      "13:40:18.351 INFO  order-service  GET /api/v1/orders/null/items -> 404"
+    ],
+    "httpRequest": "POST /api/v1/orders HTTP/1.1\nHost: staging-api.example.internal\nContent-Type: application/json\n\n{\"customerId\":\"cus_qa_012\",\"items\":[{\"sku\":\"SKU-330\",\"quantity\":2,\"unitPrice\":19.50}]}",
+    "httpResponse": "HTTP/1.1 500 Internal Server Error\nContent-Type: application/json\n\n{\"error\":\"Internal Server Error\",\"traceId\":\"7f20a1\"}",
+    "testCode": "@BeforeEach\nvoid createOrder() {\n    Response response = api.post(\"/api/v1/orders\", newOrderPayload(\"cus_qa_012\"));\n    orderId = response.jsonPath().getString(\"orderId\");\n}\n\n@Test\nvoid orderItemsAreListed() {\n    Response response = api.get(\"/api/v1/orders/\" + orderId + \"/items\");\n    assertEquals(200, response.statusCode());\n}"
+  }
+}

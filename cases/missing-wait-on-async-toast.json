@@ -1,0 +1,15 @@
+{
+  "id": "missing-wait-on-async-toast",
+  "trueClass": "TEST_CODE_DEFECT",
+  "evidence": {
+    "errorMessage": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\".toast--success\"}",
+    "stackTrace": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\".toast--success\"}\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:388)\n\tat com.example.tests.profile.SaveProfileTest.savingProfileShowsConfirmation(SaveProfileTest.java:36)",
+    "logs": [
+      "09:47:12.402 INFO  browser          click on button[data-testid=\"save-profile\"]",
+      "09:47:12.418 INFO  browser          findElement css=.toast--success -> not found (0 matches)",
+      "09:47:12.611 INFO  profile-service  PATCH /api/v1/profiles/cus_qa_003 -> 200 (193ms)",
+      "09:47:12.795 INFO  browser          DOM mutation: added div.toast.toast--success \"Profile saved\""
+    ],
+    "testCode": "@Test\nvoid savingProfileShowsConfirmation() {\n    profilePage.save();\n    assertTrue(driver.findElement(By.cssSelector(\".toast--success\")).isDisplayed());\n}"
+  }
+}

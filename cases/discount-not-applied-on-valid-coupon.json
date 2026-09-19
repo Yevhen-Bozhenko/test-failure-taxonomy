@@ -1,0 +1,15 @@
+{
+  "id": "discount-not-applied-on-valid-coupon",
+  "trueClass": "PRODUCT_DEFECT",
+  "evidence": {
+    "errorMessage": "AssertionError: order total\nexpected: <90.00>\n but was: <100.00>",
+    "logs": [
+      "10:14:02.118 INFO  pricing-service  resolved coupon SAVE10: type=PERCENT_OFF value=10 status=ACTIVE expiresAt=2026-12-31",
+      "10:14:02.121 INFO  order-service    applying coupons=[SAVE10] to subtotal=100.00",
+      "10:14:02.123 INFO  order-service    persisted order ord_8f21c4 subtotal=100.00 discountTotal=0.00 total=100.00"
+    ],
+    "httpRequest": "POST /api/v1/orders HTTP/1.1\nHost: staging-api.example.internal\nContent-Type: application/json\n\n{\"customerId\":\"cus_qa_001\",\"items\":[{\"sku\":\"SKU-114\",\"quantity\":1,\"unitPrice\":100.00}],\"couponCode\":\"SAVE10\"}",
+    "httpResponse": "HTTP/1.1 201 Created\nContent-Type: application/json\n\n{\"orderId\":\"ord_8f21c4\",\"subtotal\":100.00,\"appliedCoupons\":[\"SAVE10\"],\"discountTotal\":0.00,\"total\":100.00,\"currency\":\"USD\"}",
+    "testCode": "@Test\nvoid discountIsAppliedOnValidCoupon() {\n    Order order = api.createOrder(cart().item(\"SKU-114\", 1, \"100.00\").coupon(\"SAVE10\"));\n    assertEquals(new BigDecimal(\"90.00\"), order.total());\n}"
+  }
+}

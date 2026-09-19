@@ -1,0 +1,17 @@
+{
+  "id": "seed-user-missing-in-fixture",
+  "trueClass": "TEST_DATA",
+  "evidence": {
+    "errorMessage": "AssertionError: expected: <200> but was: <404>",
+    "logs": [
+      "07:00:03.221 INFO  seed-job      run 2026-09-18T07:00Z profile=staging-minimal",
+      "07:00:03.884 INFO  seed-job      inserted 40 users from seeds/users-core.json",
+      "07:00:03.885 WARN  seed-job      seeds/users-extended.json not present in profile staging-minimal; 12 users skipped (qa-seed-48xx range)",
+      "08:15:41.006 INFO  user-service  GET /api/v1/users/qa-seed-4821 -> 404 (2ms)",
+      "08:15:41.140 INFO  user-service  GET /api/v1/users/qa-seed-0007 -> 200 (3ms)"
+    ],
+    "httpRequest": "GET /api/v1/users/qa-seed-4821 HTTP/1.1\nHost: staging-api.example.internal\nAuthorization: Bearer <redacted>",
+    "httpResponse": "HTTP/1.1 404 Not Found\nContent-Type: application/json\n\n{\"error\":\"user_not_found\",\"userId\":\"qa-seed-4821\"}",
+    "testCode": "@Test\nvoid seededUserHasAStandardTier() {\n    User user = api.getUser(\"qa-seed-4821\");\n    assertEquals(Tier.STANDARD, user.tier());\n}"
+  }
+}

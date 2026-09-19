@@ -1,0 +1,14 @@
+{
+  "id": "feature-flag-off-by-deploy-drift",
+  "trueClass": "ENVIRONMENT_CONFIG",
+  "evidence": {
+    "errorMessage": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"[data-testid='express-checkout']\"}",
+    "logs": [
+      "08:30:02.115 INFO  config-service  applied config set staging/4.18.1 (source: deploy pipeline)",
+      "08:30:02.116 WARN  config-service  flag 'checkout.express' absent from applied set; falling back to compiled default=false",
+      "08:30:02.118 INFO  config-service  intended staging configuration (flags.yaml@main): checkout.express=true since 2026-08-04",
+      "10:05:44.230 INFO  storefront      rendering /checkout without express panel (checkout.express=false)"
+    ],
+    "testCode": "@Test\nvoid expressCheckoutPanelIsOffered() {\n    checkoutPage.open();\n    assertTrue(checkoutPage.expressCheckoutPanel().isDisplayed());\n}"
+  }
+}

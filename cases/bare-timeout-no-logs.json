@@ -1,0 +1,9 @@
+{
+  "id": "bare-timeout-no-logs",
+  "trueClass": "INSUFFICIENT_DATA",
+  "evidence": {
+    "errorMessage": "java.net.http.HttpTimeoutException: request timed out",
+    "stackTrace": "java.net.http.HttpTimeoutException: request timed out\n\tat jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:585)\n\tat java.net.http.HttpClient.send(HttpClient.java:951)\n\tat com.example.tests.ApiClient.post(ApiClient.java:71)\n\tat com.example.tests.checkout.CheckoutTest.checkoutCompletes(CheckoutTest.java:44)",
+    "httpRequest": "POST /api/v1/carts/cart_qa_58/checkout HTTP/1.1\nHost: staging-api.example.internal\nContent-Type: application/json\n\n{\"lines\":[{\"sku\":\"SKU-410\",\"quantity\":1,\"unitPrice\":12.00}],\"shipping\":\"STANDARD\"}"
+  }
+}

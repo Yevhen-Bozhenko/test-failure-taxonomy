@@ -1,0 +1,15 @@
+{
+  "id": "stale-selector-after-redesign",
+  "trueClass": "TEST_CODE_DEFECT",
+  "evidence": {
+    "errorMessage": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"#promo-code\"}",
+    "stackTrace": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"#promo-code\"}\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:388)\n\tat com.example.tests.pages.CheckoutPage.enterPromoCode(CheckoutPage.java:47)\n\tat com.example.tests.checkout.PromoCodeTest.promoCodeReducesTotal(PromoCodeTest.java:29)",
+    "logs": [
+      "deploy-pipeline  2026-09-12  web-storefront release 4.18.0 \"Checkout redesign\" promoted to staging",
+      "release-notes 4.18.0 - Checkout: promo code entry moved into the order summary panel. The #promo-code input is replaced by [data-testid=\"coupon-input\"]; page objects must be updated.",
+      "14:31:09.774 INFO  browser  loaded https://staging.example.internal/checkout (build 4.18.0)",
+      "14:31:10.002 INFO  browser  findElement css=#promo-code -> not found (0 matches)"
+    ],
+    "testCode": "public void enterPromoCode(String code) {\n    driver.findElement(By.cssSelector(\"#promo-code\")).sendKeys(code);\n    driver.findElement(By.cssSelector(\"#apply-promo\")).click();\n}"
+  }
+}
