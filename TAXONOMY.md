@@ -90,12 +90,18 @@ The test itself is wrong.
 
 - Choose it when: the fault is in the test's own logic. Wrong expected value written into the
   test; an assertion on the wrong subject; a locator or selector that no longer matches; a
-  missing or inadequate wait; dependence on the order of other tests or on state they left
-  behind; a setup call whose failure the test swallowed and carried on from; an unchecked
+  missing or inadequate wait; dependence on the order of other tests, or on state they left
+  behind in the suite's own machinery — a static field, a shared browser session, a token cached
+  between tests; a setup call whose failure the test swallowed and carried on from; an unchecked
   dereference in test-package frames.
 - Do not choose it when: the expectation is right and the product changed behaviour without a
   corresponding change to the contract; or the test's data was correct as written and the
   environment supplied something different at run time.
+
+Leftover state only lands here when the suite owns it. If what an earlier run left behind is a
+row the product owns — an account, an order, a subscription — this class does not apply, and the
+stale-account tie-break below decides between TEST_DATA and ENVIRONMENT_CONFIG. Who caused the
+staleness never decides the class; where the stale thing lives always does.
 
 A test that is merely stale — the product changed deliberately and the test was never updated —
 is a wrong test, so it is TEST_CODE_DEFECT. But that requires evidence that the change was
