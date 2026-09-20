@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQ7GkpAIh8nB5Ek9sQ3c8G0Nm8MxD",
+  "object": "chat.completion",
+  "created": 1789893178,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_DATA\",\"reasoning\":\"The stale-account tie-break classifies incorrect state in a product-owned subscription as TEST_DATA, even when an earlier CI run caused it. The logs show that run #4471 cancelled sub_qa_shared before this test attempted to upgrade it, and the product returned 409 because the inherited subscription was CANCELLED.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3113,
+    "completion_tokens": 75,
+    "total_tokens": 3188,
+    "prompt_tokens_details": {
+      "cached_tokens": 3110,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

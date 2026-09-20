@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQ7GEqIwgCGDylEihIFIW3lGoOuNl",
+  "object": "chat.completion",
+  "created": 1789893146,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_CODE_DEFECT\",\"reasoning\":\"The missing or inadequate wait rule applies: the test immediately looks for the success toast after clicking Save, without waiting for the asynchronous operation. Logs show the lookup failed at 09:47:12.418, before the PATCH returned 200 at 09:47:12.611 and the matching toast appeared at 09:47:12.795.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3157,
+    "completion_tokens": 87,
+    "total_tokens": 3244,
+    "prompt_tokens_details": {
+      "cached_tokens": 3154,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

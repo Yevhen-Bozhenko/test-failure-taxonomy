@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQ7GdG3jvqIQMfSFSfAbM0FX5KQMH",
+  "object": "chat.completion",
+  "created": 1789893171,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_DATA\",\"reasoning\":\"The test relied on a pre-seeded product record that was absent, which falls under TEST_DATA for inherited fixtures. The seed logs show that the qa-seed-48xx users were skipped, and the user-service logs and HTTP response confirm that the intended request reached the product and returned 404 for qa-seed-4821.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3200,
+    "completion_tokens": 119,
+    "total_tokens": 3319,
+    "prompt_tokens_details": {
+      "cached_tokens": 3197,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 33,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

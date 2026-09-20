@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQ7FBjOlkvI1HwLElssCoCLwUHVdr",
+  "object": "chat.completion",
+  "created": 1789893081,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"PRODUCT_DEFECT\",\"reasoning\":\"The request reached the product and matched the test’s intent, while server logs independently establish that SAVE10 was an active, unexpired 10% discount being applied to a 100.00 subtotal. Despite returning 201 and listing SAVE10 as applied, the product persisted discountTotal=0.00 and total=100.00, so the evidence shows correct input and state producing the wrong output.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3224,
+    "completion_tokens": 143,
+    "total_tokens": 3367,
+    "prompt_tokens_details": {
+      "cached_tokens": 3221,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 43,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

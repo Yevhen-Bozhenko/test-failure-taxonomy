@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQ7FXidXF8lZP9mesVsjE0yJ4hGGG",
+  "object": "chat.completion",
+  "created": 1789893103,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_CODE_DEFECT\",\"reasoning\":\"The fixture-setup tie-break classifies an unchecked failed setup call followed by continued execution as TEST_CODE_DEFECT. The POST returned 500, but createOrder() never checked its status; the logs show the test proceeding with orderId=null and requesting /api/v1/orders/null/items, which returned the asserted-against 404.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3232,
+    "completion_tokens": 83,
+    "total_tokens": 3315,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3229,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

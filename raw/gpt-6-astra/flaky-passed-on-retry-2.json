@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQ7FmEmVQYN8uHDQiTXT3I1p39saU",
+  "object": "chat.completion",
+  "created": 1789893118,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The passing-retry tie-break says a retry that passes does not establish or narrow the cause; the logs show only an ACTIVE-versus-PENDING assertion failure followed by a pass. The first failure remains consistent with TEST_CODE_DEFECT from an inadequate wait or PRODUCT_DEFECT from incorrect activation timing; an independent activation timing contract paired with a server-side timeline for the first attempt would distinguish them.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3000,
+    "completion_tokens": 94,
+    "total_tokens": 3094,
+    "prompt_tokens_details": {
+      "cached_tokens": 2997,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}
