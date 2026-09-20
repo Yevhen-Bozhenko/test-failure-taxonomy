@@ -1,6 +1,5 @@
 package io.github.yevhenbozhenko.testfailure;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -8,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  * <p>The reasoning is the material for the qualitative analysis, so it is kept verbatim.
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public record Classification(@JsonProperty("class") FailureClass failureClass, String reasoning) {
 
     public Classification {

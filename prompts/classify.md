@@ -5,7 +5,7 @@ experience of what usually causes a failure of this shape disagrees with them, t
 
 {{TAXONOMY}}
 
-# Evidence
+# This failure
 
 Everything known about this failure is below. A field that is absent was not collected — its
 absence is not itself evidence about what happened.
@@ -18,8 +18,7 @@ Reply with one JSON object and nothing else: no markdown fence, no text before o
 
 {"class": "...", "reasoning": "..."}
 
-`class` is exactly one of: PRODUCT_DEFECT, TEST_CODE_DEFECT, TEST_DATA, ENVIRONMENT_CONFIG,
-INSUFFICIENT_DATA.
+`class` is exactly one of: {{CLASSES}}.
 
 `reasoning` is two or three sentences saying which rule decided it and which piece of evidence
 made that rule apply.

@@ -11,3 +11,6 @@ target/
 
 # results/ is regenerated from raw/ and is not the record of an experiment; raw/ is, and is tracked.
 results/
+
+# Ctrl-C during a run can leave one of these; raw/ is the record and is tracked.
+*.partial
