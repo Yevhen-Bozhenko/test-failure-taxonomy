@@ -20,8 +20,10 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 /**
- * Asks both models to label every case, {@value #RUNS} times each, and saves every reply to
- * {@code raw/<model>/<caseId>-<run>.json}.
+ * Asks both models to label every case, {@value #RUNS} times each, twice over: once with the
+ * rules in the prompt, saving to {@code raw/<model>/<caseId>-<run>.json}, and once without them,
+ * saving to {@code raw-no-rules/...}. Comparing the two shows whether the rules change the
+ * answers. That is 2 x 2 x 12 x {@value #RUNS} = 144 calls on a fresh checkout.
  *
  * <p>If a reply is already saved, that call is skipped. So running this again after a failure
  * only asks for what is missing, and a saved reply is never changed.
@@ -57,7 +59,6 @@ public final class Runner {
         key("ANTHROPIC_API_KEY");
         key("OPENAI_API_KEY");
 
-        String template = Files.readString(Path.of("prompts/classify.md"));
         String taxonomy = Files.readString(Path.of("TAXONOMY.md")).strip();
 
         // Taken from the code, so renaming an answer cannot leave the prompt asking for a name
@@ -66,7 +67,7 @@ public final class Runner {
                 Stream.of(FailureClass.values()).map(FailureClass::name).toList());
 
         // Read every case before the first call, for the same reason as the keys above. A typo
-        // in the last file would otherwise stop the run after 33 calls we had already paid for.
+        // in the last file would otherwise stop the run partway, after calls we had paid for.
         List<Path> caseFiles;
         try (Stream<Path> files = Files.list(Path.of("cases"))) {
             caseFiles = files.filter(p -> p.getFileName().toString().endsWith(".json")).sorted().toList();
@@ -80,52 +81,78 @@ public final class Runner {
         int skipped = 0;
         int failed = 0;
 
-        for (String model : List.of(ANTHROPIC_MODEL, OPENAI_MODEL)) {
-            for (Case testCase : cases) {
-                String prompt = template
-                        .replace("{{TAXONOMY}}", taxonomy)
-                        .replace("{{CLASSES}}", classes)
-                        .replace("{{EVIDENCE}}", EVIDENCE.writeValueAsString(testCase.evidence()));
+        // The same 12 cases are asked twice over: once with the rules in the prompt, once with
+        // only the five answers and no rules. Comparing the two is how we find out whether the
+        // rules change what the models say. Both files are read now, not when their turn comes,
+        // so a missing one cannot surface after 72 calls we have already paid for.
+        var conditions = List.of(
+                Map.entry("raw", Files.readString(Path.of("prompts/classify.md"))),
+                Map.entry("raw-no-rules", Files.readString(Path.of("prompts/classify-no-rules.md"))));
 
-                for (int run = 1; run <= RUNS; run++) {
-                    Path out = Path.of("raw", model, testCase.id() + "-" + run + ".json");
-                    if (Files.exists(out)) {
-                        skipped++;
-                        continue;
+        // Every answer name has to appear in the words the model reads, not only in the list we
+        // generate. Otherwise renaming one would leave a prompt that contradicts itself.
+        for (var condition : conditions) {
+            for (FailureClass failureClass : FailureClass.values()) {
+                if (!condition.getValue().contains(failureClass.name())
+                        && !taxonomy.contains(failureClass.name())) {
+                    throw new IllegalStateException(
+                            failureClass.name() + " is never mentioned in the prompt for "
+                                    + condition.getKey());
+                }
+            }
+        }
+
+        for (var condition : conditions) {
+            String template = condition.getValue();
+
+            for (String model : List.of(ANTHROPIC_MODEL, OPENAI_MODEL)) {
+                for (Case testCase : cases) {
+                    String prompt = template
+                            .replace("{{TAXONOMY}}", taxonomy)
+                            .replace("{{CLASSES}}", classes)
+                            .replace("{{EVIDENCE}}", EVIDENCE.writeValueAsString(testCase.evidence()));
+
+                    for (int run = 1; run <= RUNS; run++) {
+                        Path out = Path.of(
+                                condition.getKey(), model, testCase.id() + "-" + run + ".json");
+                        if (Files.exists(out)) {
+                            skipped++;
+                            continue;
+                        }
+
+                        HttpResponse<String> response;
+                        try {
+                            response = HTTP.send(
+                                    request(model, prompt), HttpResponse.BodyHandlers.ofString());
+                        } catch (IOException e) {
+                            // Nothing was sent, or nothing came back. We paid for nothing and
+                            // saved nothing, so the next run simply tries this one again.
+                            failed++;
+                            System.out.println("FAIL " + out + "  " + e);
+                            continue;
+                        }
+
+                        if (response.statusCode() != 200) {
+                            failed++;
+                            System.out.println("FAIL " + out + "  HTTP " + response.statusCode());
+                            System.out.println("     " + response.body());
+                            continue;
+                        }
+
+                        try {
+                            write(out, response.body());
+                        } catch (IOException e) {
+                            // We paid for this reply but could not save it: a full disk, or a
+                            // virus scanner holding the file. Print it rather than lose it.
+                            failed++;
+                            System.out.println("FAIL " + out + "  reply received but not saved: " + e);
+                            System.out.println(response.body());
+                            continue;
+                        }
+
+                        sent++;
+                        System.out.println("ok   " + out);
                     }
-
-                    HttpResponse<String> response;
-                    try {
-                        response = HTTP.send(
-                                request(model, prompt), HttpResponse.BodyHandlers.ofString());
-                    } catch (IOException e) {
-                        // Nothing was sent, or nothing came back. We paid for nothing and saved
-                        // nothing, so the next run simply tries this one again.
-                        failed++;
-                        System.out.println("FAIL " + out + "  " + e);
-                        continue;
-                    }
-
-                    if (response.statusCode() != 200) {
-                        failed++;
-                        System.out.println("FAIL " + out + "  HTTP " + response.statusCode());
-                        System.out.println("     " + response.body());
-                        continue;
-                    }
-
-                    try {
-                        write(out, response.body());
-                    } catch (IOException e) {
-                        // We paid for this reply but could not save it: a full disk, or a virus
-                        // scanner holding the file. Print it rather than lose it.
-                        failed++;
-                        System.out.println("FAIL " + out + "  reply received but not saved: " + e);
-                        System.out.println(response.body());
-                        continue;
-                    }
-
-                    sent++;
-                    System.out.println("ok   " + out);
                 }
             }
         }
