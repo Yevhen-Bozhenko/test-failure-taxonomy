@@ -147,8 +147,7 @@ INSUFFICIENT_DATA and the reluctance is about confidence, not about evidence.
 
 ## Tie-breaks
 
-The ambiguous pairs, decided here once so that the ground truth in the case files stays
-consistent.
+The ambiguous pairs, decided here once.
 
 ### Stale test account state — TEST_DATA or ENVIRONMENT_CONFIG
 
@@ -209,11 +208,4 @@ A passing retry is not evidence of a class and narrows nothing on its own. Races
 races in the product, and intermittent infrastructure all pass on retry.
 
 Classify from the evidence of the first failure. If that evidence amounts to "it failed and then
-it passed", the case is INSUFFICIENT_DATA — and it is worth seeding at least one such case,
-because the pull toward answering TEST_CODE_DEFECT here on the strength of the word "flaky"
-alone is exactly the reflex this taxonomy exists to test for.
-
-### Other tie-breaks
-
-Add a heading per pair as new cases surface one. A pair earns a heading the moment two cases
-would otherwise be labelled inconsistently.
+it passed", the case is INSUFFICIENT_DATA.
