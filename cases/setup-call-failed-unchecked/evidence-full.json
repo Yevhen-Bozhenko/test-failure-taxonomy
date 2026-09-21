@@ -1,0 +1,11 @@
+{
+  "caseId": "setup-call-failed-unchecked",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected status code <200> but was <404>",
+  "stackTrace": "java.lang.AssertionError: expected status code <200> but was <404>\n    at com.acme.tests.api.orders.OrderDetailTest.orderDetailReturnsLineItems(OrderDetailTest.java:71)",
+  "httpRequest": "--- setup ---\nPOST /api/v1/orders HTTP/1.1\n{\"customerId\":\"CUST-3310\",\"items\":[{\"sku\":\"SEAT-ANNUAL\",\"qty\":1}]}\n--- assertion under test ---\nGET /api/v1/orders/null HTTP/1.1",
+  "httpResponse": "--- setup ---\n422 {\"error\":\"VALIDATION_FAILED\",\"fields\":{\"currency\":\"must not be null\"}}\n--- assertion under test ---\n404 {\"error\":\"ORDER_NOT_FOUND\"}",
+  "logs": "2026-09-18T10:00:02.221Z orders-service WARN  OrderController  POST /api/v1/orders -> 422 currency missing\n2026-09-18T10:00:02.410Z orders-service INFO  OrderController  GET /api/v1/orders/null -> 404",
+  "testCode": "@BeforeMethod\npublic void createOrder() {\n    orderId = given().spec(ordersSpec).body(payload)\n            .when().post(\"/api/v1/orders\")\n            .then().extract().path(\"orderId\");   // no status assertion\n}",
+  "testHistory": "Last green: build #2112. OrderDetailTest.java unchanged since 2026-01-30. orders-service commit 55d0e19 'feat: require currency on order creation' landed in #2113 with a contract minor bump."
+}

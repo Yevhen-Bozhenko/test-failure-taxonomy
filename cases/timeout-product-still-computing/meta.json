@@ -1,0 +1,15 @@
+{
+  "caseId": "timeout-product-still-computing",
+  "seededClass": "PRODUCT_DEFECT",
+  "seededSubclass": "LOGIC_ERROR",
+  "expectedUnderRules": {
+    "FULL": "PRODUCT_DEFECT",
+    "THIN": "INSUFFICIENT_DATA"
+  },
+  "description": "Read timeout on the same endpoint; the service received the request and never finished.",
+  "howSeeded": "Dropped the index on ledger_entry.period so the aggregation degrades to a full scan.",
+  "decidingEvidence": "Service logs showing the request accepted and a query still executing past the client deadline.",
+  "twinOf": "timeout-request-never-arrived",
+  "twinAxis": "Identical client-side timeout; here the service received the request and was still working when the clock ran out.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

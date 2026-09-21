@@ -1,0 +1,15 @@
+{
+  "caseId": "invoice-total-per-line-rounding",
+  "seededClass": "PRODUCT_DEFECT",
+  "seededSubclass": "LOGIC_ERROR",
+  "expectedUnderRules": {
+    "FULL": "PRODUCT_DEFECT",
+    "THIN": "INSUFFICIENT_DATA"
+  },
+  "description": "Invoice total is one cent below the sum of its line items.",
+  "howSeeded": "Changed billing-service Money.of() to round each LineItem to 2dp before summation, instead of summing at full precision and rounding once.",
+  "decidingEvidence": "The contract excerpt stating that rounding happens after summation, plus a test-history record showing the test was green on the previous build and has not been edited since.",
+  "twinOf": "invoice-total-no-independent-statement",
+  "twinAxis": "Presence of an independent statement of what 'correct' means (contract excerpt + green history on an unedited test).",
+  "evidenceOrigin": "CONSTRUCTED"
+}

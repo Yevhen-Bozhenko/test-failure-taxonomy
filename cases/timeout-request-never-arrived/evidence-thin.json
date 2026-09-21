@@ -1,0 +1,5 @@
+{
+  "caseId": "timeout-request-never-arrived",
+  "evidenceLevel": "THIN",
+  "errorMessage": "java.net.SocketTimeoutException: Read timed out"
+}

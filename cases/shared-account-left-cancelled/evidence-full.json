@@ -1,0 +1,11 @@
+{
+  "caseId": "shared-account-left-cancelled",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected subscription state [ACTIVE] but found [CANCELLED]",
+  "stackTrace": "java.lang.AssertionError: expected subscription state [ACTIVE] but found [CANCELLED]\n    at com.acme.tests.api.subs.RenewalTest.activeSubscriptionCanRenew(RenewalTest.java:52)",
+  "httpRequest": "POST /api/v1/subscriptions/SUB-70001/renew HTTP/1.1\nHost: subs.staging.internal",
+  "httpResponse": "{\n  \"status\": 409,\n  \"body\": {\n    \"error\": \"SUBSCRIPTION_NOT_RENEWABLE\",\n    \"state\": \"CANCELLED\",\n    \"cancelledAt\": \"2026-09-18T01:12:44Z\"\n  }\n}",
+  "logs": "2026-09-18T01:12:44.100Z subs-service INFO  AuditLog  SUB-70001 state ACTIVE -> CANCELLED actor=svc-qa-automation corr=nightly-2117\n2026-09-18T09:30:02.884Z subs-service INFO  AuditLog  SUB-70001 renew rejected, state=CANCELLED corr=ci-2118\n--- shared account registry: SUB-70001 owned by account QA-SHARED-04, used by 11 tests across 3 suites",
+  "testCode": "private static final String SUBSCRIPTION_ID = \"SUB-70001\"; // shared QA subscription\n\n@Test\npublic void activeSubscriptionCanRenew() {\n    Response r = subsClient.renew(SUBSCRIPTION_ID);\n    assertEquals(r.path(\"state\"), \"ACTIVE\", \"expected subscription state\");\n}",
+  "testHistory": "Last green: build #2116. RenewalTest.java unchanged since 2026-04-22. Nightly suite #2117 ran between the two builds."
+}

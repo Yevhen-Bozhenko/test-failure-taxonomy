@@ -1,0 +1,14 @@
+{
+  "caseId": "feature-flag-off-by-design",
+  "seededClass": "TEST_CODE_DEFECT",
+  "seededSubclass": "ASSERTION_ERROR",
+  "expectedUnderRules": {
+    "FULL": "TEST_CODE_DEFECT"
+  },
+  "description": "Test assumes a flag is on; staging is documented as running it off.",
+  "howSeeded": "Wrote a test against the flagged behaviour without gating it on the flag state.",
+  "decidingEvidence": "The environment's intended flag configuration, which lists the flag as off in staging until GA.",
+  "twinOf": "feature-flag-reverted-on-redeploy",
+  "twinAxis": "The same flag in the same off state; here that state is the documented intent for the environment.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

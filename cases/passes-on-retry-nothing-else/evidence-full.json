@@ -1,0 +1,7 @@
+{
+  "caseId": "passes-on-retry-nothing-else",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected [true] but found [false]",
+  "logs": "2026-09-19T18:30:01.002Z ci-runner WARN  RetryAnalyzer  CartBadgeTest.badgeShowsItemCount attempt 1 failed, retrying\n2026-09-19T18:30:09.884Z ci-runner INFO  RetryAnalyzer  CartBadgeTest.badgeShowsItemCount attempt 2 passed\n2026-09-19T18:30:09.885Z ci-runner INFO  Reporter       suite result PASSED (1 flaky)",
+  "testHistory": "Flaky on 3 of the last 40 builds. No attempt-1 artifacts retained."
+}

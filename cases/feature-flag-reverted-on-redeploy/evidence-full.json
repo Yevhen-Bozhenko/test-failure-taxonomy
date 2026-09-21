@@ -1,0 +1,9 @@
+{
+  "caseId": "feature-flag-reverted-on-redeploy",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected element [.bulk-export] to be visible",
+  "stackTrace": "at com.acme.tests.ui.reports.BulkExportTest.exportButtonVisible(BulkExportTest.java:29)",
+  "logs": "2026-09-19T14:41:02.006Z remote-config INFO  overlay staging/flags.yaml applied, 14 overrides active, bulk-export-v2=true\n2026-09-19T15:10:55.213Z remote-config INFO  redeploy rev 88 -> 89, overlay path not mounted, 0 overrides active\n2026-09-19T15:22:31.440Z reports-ui    INFO  FlagClient evaluated bulk-export-v2=false source=default\n--- config/staging/flags.yaml (HEAD): bulk-export-v2: true   # enabled in staging since 2026-07-01",
+  "testCode": "$(\".bulk-export\").shouldBe(visible);",
+  "testHistory": "Last green: build #2120, 14:55 UTC same day. BulkExportTest.java unchanged since 2026-07-02."
+}

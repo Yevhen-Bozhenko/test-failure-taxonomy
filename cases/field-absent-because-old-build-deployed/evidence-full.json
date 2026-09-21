@@ -1,0 +1,11 @@
+{
+  "caseId": "field-absent-because-old-build-deployed",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: Expected response to contain key 'renewalReminderAt' but it was absent",
+  "stackTrace": "java.lang.AssertionError: Expected response to contain key 'renewalReminderAt' but it was absent\n    at com.acme.tests.support.JsonAssertions.assertHasKey(JsonAssertions.java:34)\n    at com.acme.tests.api.subs.RenewalReminderTest.responseCarriesReminderTimestamp(RenewalReminderTest.java:62)",
+  "httpRequest": "GET /api/v1/subscriptions/SUB-88120/renewal HTTP/1.1\nHost: subs.staging.internal",
+  "httpResponse": "{\n  \"status\": 200,\n  \"body\": {\n    \"subscriptionId\": \"SUB-88120\",\n    \"renewsOn\": \"2026-10-01\"\n  }\n}",
+  "logs": "2026-09-17T07:02:00.311Z ci-runner INFO  deploy-staging  artifact subs-service-2.5.0-b2110.jar staged\n2026-09-17T07:02:41.883Z ci-runner WARN  deploy-staging  health gate not reached, rollout aborted, previous revision retained\n2026-09-17T07:12:19.004Z subs-service INFO  Actuator        GET /actuator/info -> {\"build\":{\"number\":\"2109\",\"version\":\"2.4.0\"}}",
+  "testCode": "@Test\npublic void responseCarriesReminderTimestamp() {\n    Response r = subsClient.getRenewal(SUBSCRIPTION_ID);\n    JsonAssertions.assertHasKey(r, \"renewalReminderAt\");\n}",
+  "testHistory": "RenewalReminderTest.java added 2026-09-16 alongside subs-service commit 9ab2f61 'feat: expose renewalReminderAt'. Expected build #2110."
+}

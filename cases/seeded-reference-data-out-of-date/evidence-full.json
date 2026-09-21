@@ -1,0 +1,11 @@
+{
+  "caseId": "seeded-reference-data-out-of-date",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected tax [8.25] but found [7.75]",
+  "stackTrace": "at com.acme.tests.api.billing.TaxCalculationTest.californiaRateApplied(TaxCalculationTest.java:47)",
+  "httpRequest": "POST /api/v1/quotes HTTP/1.1\n{\"subtotal\":100.00,\"jurisdiction\":\"US-CA\"}",
+  "httpResponse": "{\n  \"status\": 200,\n  \"body\": {\n    \"subtotal\": 100.0,\n    \"taxRate\": 7.75,\n    \"tax\": 7.75,\n    \"total\": 107.75\n  }\n}",
+  "logs": "2026-09-19T16:02:10.551Z billing-service DEBUG TaxTableRepository  lookup US-CA effective<=2026-09-19 -> rate 7.75 effective_from 2025-01-01\n--- seed manifest: staging restored 2026-09-14 from snapshot prod-2025-12-28; tax_rate table rows: 51, max effective_from 2025-01-01\n--- reference data pipeline: 2026 rate refresh applied to production 2026-01-04, never replayed into staging",
+  "testCode": "assertEquals(quote.getTaxRate(), new BigDecimal(\"8.25\"));",
+  "testHistory": "Last green: build #2098, 2026-09-13, before the snapshot restore. TaxCalculationTest.java unchanged since 2026-01-08."
+}

@@ -1,0 +1,11 @@
+{
+  "caseId": "hardcoded-id-row-purged",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected status code <200> but was <404>",
+  "stackTrace": "at com.acme.tests.api.customers.CustomerProfileTest.profileReturnsContactDetails(CustomerProfileTest.java:33)",
+  "httpRequest": "GET /api/v1/customers/CUST-1188 HTTP/1.1",
+  "httpResponse": "{\n  \"status\": 404,\n  \"body\": {\n    \"error\": \"CUSTOMER_NOT_FOUND\"\n  }\n}",
+  "logs": "2026-09-14T03:00:44.120Z retention-job INFO  purged 812 customer records inactive > 24 months\n2026-09-14T03:00:44.121Z retention-job DEBUG purged CUST-1188 last_active 2024-08-02\n2026-09-19T20:11:02.775Z customers-service INFO  GET /api/v1/customers/CUST-1188 -> 404",
+  "testCode": "private static final String CUSTOMER_ID = \"CUST-1188\";",
+  "testHistory": "Last green: build #2095, 2026-09-13. CustomerProfileTest.java unchanged since 2025-09-16."
+}

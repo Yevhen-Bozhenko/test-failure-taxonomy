@@ -1,0 +1,5 @@
+{
+  "caseId": "invoice-total-per-line-rounding",
+  "evidenceLevel": "THIN",
+  "errorMessage": "java.lang.AssertionError: Invoice total mismatch expected [100.00] but found [99.99]"
+}

@@ -1,0 +1,8 @@
+{
+  "caseId": "timeout-bare",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.net.SocketTimeoutException: Read timed out",
+  "stackTrace": "java.net.SocketTimeoutException: Read timed out\n    at com.acme.tests.api.reports.RevenueReportTest.monthlyRevenueReturns200(RevenueReportTest.java:38)",
+  "httpRequest": "GET /api/v1/reports/revenue?period=2026-08 HTTP/1.1",
+  "httpResponse": "(none - no response received)"
+}

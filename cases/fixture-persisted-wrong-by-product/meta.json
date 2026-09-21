@@ -1,0 +1,14 @@
+{
+  "caseId": "fixture-persisted-wrong-by-product",
+  "seededClass": "PRODUCT_DEFECT",
+  "seededSubclass": "CONTRACT_VIOLATION",
+  "expectedUnderRules": {
+    "FULL": "PRODUCT_DEFECT"
+  },
+  "description": "Setup POST returns 201 and echoes the discount; the persisted order has no discount applied.",
+  "howSeeded": "Removed the discount mapping from OrderEntity while leaving the response DTO untouched.",
+  "decidingEvidence": "The 201 on the setup POST echoing the discount, against a stored record with the discount dropped.",
+  "twinOf": "setup-call-failed-unchecked",
+  "twinAxis": "Also surfaces as a bad fixture, but the setup call reported success and the product persisted it wrongly.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

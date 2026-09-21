@@ -1,0 +1,5 @@
+{
+  "caseId": "field-absent-because-old-build-deployed",
+  "evidenceLevel": "THIN",
+  "errorMessage": "java.lang.AssertionError: Expected response to contain key 'renewalReminderAt' but it was absent"
+}

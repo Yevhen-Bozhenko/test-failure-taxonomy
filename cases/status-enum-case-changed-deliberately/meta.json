@@ -1,0 +1,15 @@
+{
+  "caseId": "status-enum-case-changed-deliberately",
+  "seededClass": "TEST_CODE_DEFECT",
+  "seededSubclass": "ASSERTION_ERROR",
+  "expectedUnderRules": {
+    "FULL": "TEST_CODE_DEFECT",
+    "THIN": "INSUFFICIENT_DATA"
+  },
+  "description": "Test asserts subscription status ACTIVE; product now returns active.",
+  "howSeeded": "Applied the real v2.4.0 change that lowercased all enum values in subscription responses, without updating the test.",
+  "decidingEvidence": "The release note documenting the enum-case change as intentional, with the corresponding contract version bump.",
+  "twinOf": "field-absent-because-old-build-deployed",
+  "twinAxis": "A missing/changed field caused by a deliberate, documented product change versus one caused by the wrong artifact being deployed.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

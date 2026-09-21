@@ -1,0 +1,14 @@
+{
+  "caseId": "setup-call-failed-unchecked",
+  "seededClass": "TEST_CODE_DEFECT",
+  "seededSubclass": "ASSERTION_ERROR",
+  "expectedUnderRules": {
+    "FULL": "TEST_CODE_DEFECT"
+  },
+  "description": "Order fixture was never created because the setup POST returned 422 and the test ignored it.",
+  "howSeeded": "Tightened validation so the fixture payload's currency field became mandatory, leaving the test's unchecked setup call failing.",
+  "decidingEvidence": "The 422 on the setup POST, which the test neither asserted on nor logged.",
+  "twinOf": "fixture-persisted-wrong-by-product",
+  "twinAxis": "Both surface as a bad fixture downstream. Here the setup call visibly failed and the test carried on.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

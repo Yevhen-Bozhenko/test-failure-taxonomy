@@ -1,0 +1,14 @@
+{
+  "caseId": "service-client-secret-expired",
+  "seededClass": "ENVIRONMENT_CONFIG",
+  "seededSubclass": "CONFIG_DRIFT",
+  "expectedUnderRules": {
+    "FULL": "ENVIRONMENT_CONFIG"
+  },
+  "description": "Order history returns 401; the test's token is fresh, but the orders service cannot validate it because its own staging client secret has expired.",
+  "howSeeded": "Let the staging orders-service client secret pass its 90-day expiry without rotating it in the secret store.",
+  "decidingEvidence": "The identity provider rejecting the orders service's own client credentials as expired, while the test's user token was minted seconds earlier and never cached.",
+  "twinOf": "auth-token-cached-in-static-field",
+  "twinAxis": "The same 401 on the same endpoint. There the test reused its own expired token; here the test's token is fresh and the environment's service credential has expired.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

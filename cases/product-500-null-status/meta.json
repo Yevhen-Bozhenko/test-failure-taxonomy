@@ -1,0 +1,14 @@
+{
+  "caseId": "product-500-null-status",
+  "seededClass": "PRODUCT_DEFECT",
+  "seededSubclass": "LOGIC_ERROR",
+  "expectedUnderRules": {
+    "FULL": "PRODUCT_DEFECT"
+  },
+  "description": "Account lookup returns 500; the service dereferences a status that the contract says a pending account does not have.",
+  "howSeeded": "Inlined the status mapping in AccountService.mapAccount so it calls getStatus().getCode() unconditionally, without the null check pending accounts require.",
+  "decidingEvidence": "A NullPointerException with product frames in mapAccount, for a valid request on an account the contract says has no status yet, while verified accounts are served normally.",
+  "twinOf": null,
+  "twinAxis": null,
+  "evidenceOrigin": "CONSTRUCTED"
+}

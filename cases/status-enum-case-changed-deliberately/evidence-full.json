@@ -1,0 +1,12 @@
+{
+  "caseId": "status-enum-case-changed-deliberately",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected [ACTIVE] but found [active]",
+  "stackTrace": "java.lang.AssertionError: expected [ACTIVE] but found [active]\n    at org.testng.Assert.assertEquals(Assert.java:131)\n    at com.acme.tests.api.subs.SubscriptionStatusTest.activeSubscriptionReportsActive(SubscriptionStatusTest.java:57)",
+  "httpRequest": "GET /api/v1/subscriptions/SUB-88120 HTTP/1.1\nHost: subs.staging.internal",
+  "httpResponse": "{\n  \"status\": 200,\n  \"body\": {\n    \"subscriptionId\": \"SUB-88120\",\n    \"status\": \"active\",\n    \"tier\": \"professional\"\n  }\n}",
+  "logs": "2026-09-16T08:31:10.442Z subs-service INFO  SubscriptionController  GET /api/v1/subscriptions/SUB-88120 -> 200 (11ms)",
+  "testCode": "assertEquals(response.path(\"status\"), \"ACTIVE\");",
+  "contractExcerpt": "subs-api v2.4.0 release notes, BREAKING: all enum-valued response fields (`status`, `tier`, `billingCycle`) are serialised in lower case. Consumers pinned to v2.3.x should update string comparisons. Migration deadline 2026-10-01.",
+  "testHistory": "Last green: build #2103, 2026-09-14. SubscriptionStatusTest.java unchanged since 2025-11-20. subs-service deployed v2.4.0 on 2026-09-15."
+}

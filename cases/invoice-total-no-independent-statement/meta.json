@@ -1,0 +1,15 @@
+{
+  "caseId": "invoice-total-no-independent-statement",
+  "seededClass": "PRODUCT_DEFECT",
+  "seededSubclass": "LOGIC_ERROR",
+  "expectedUnderRules": {
+    "FULL": "INSUFFICIENT_DATA",
+    "THIN": "INSUFFICIENT_DATA"
+  },
+  "description": "Identical total mismatch, but nothing other than the test's own assertion says which value is correct.",
+  "howSeeded": "Same rounding change as the twin, observed through a newly written test that has never passed against any build.",
+  "decidingEvidence": "Either the contract clause governing rounding, or a build on which this test was green.",
+  "twinOf": "invoice-total-per-line-rounding",
+  "twinAxis": "Same seeded defect, same failure shape, but the bundle contains no contract statement and no green history (the test is new and has never passed).",
+  "evidenceOrigin": "CONSTRUCTED"
+}

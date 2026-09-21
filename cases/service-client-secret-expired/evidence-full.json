@@ -1,0 +1,11 @@
+{
+  "caseId": "service-client-secret-expired",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected status code <200> but was <401>",
+  "stackTrace": "java.lang.AssertionError: expected status code <200> but was <401>\n    at com.acme.tests.api.orders.OrderHistoryTest.userSeesOwnOrders(OrderHistoryTest.java:63)",
+  "httpRequest": "GET /api/v1/orders?mine=true HTTP/1.1\nHost: orders.staging.internal\nAuthorization: Bearer eyJhbGciOi... (issued 2026-09-19T09:14:02Z, ttl 900s)",
+  "httpResponse": "{\n  \"status\": 401,\n  \"body\": {\n    \"error\": \"TOKEN_VALIDATION_FAILED\"\n  }\n}",
+  "logs": "2026-09-19T09:14:02.411Z ui-tests INFO  AuthSupport  token minted for qa.user+07@example.test, ttl 900s\n2026-09-19T09:14:02.530Z orders-service WARN  TokenIntrospector  introspection rejected by identity-provider: 401 invalid_client\n2026-09-19T09:14:02.529Z identity-provider INFO  client orders-svc-staging authentication failed: client secret expired 2026-09-18T00:00:00Z\n--- secret store: staging/orders-svc/CLIENT_SECRET last rotated 2026-06-20, policy expiry 90 days",
+  "testCode": "public final class AuthSupport {\n    public static String token() {\n        return mintToken(QA_USER); // minted per call, never cached\n    }\n}",
+  "testHistory": "Last green: build #2121, 2026-09-17. OrderHistoryTest.java and AuthSupport.java unchanged since 2026-09-02. No orders-service deploy since build #2118."
+}

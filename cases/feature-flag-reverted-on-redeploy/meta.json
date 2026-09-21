@@ -1,0 +1,14 @@
+{
+  "caseId": "feature-flag-reverted-on-redeploy",
+  "seededClass": "ENVIRONMENT_CONFIG",
+  "seededSubclass": "CONFIG_DRIFT",
+  "expectedUnderRules": {
+    "FULL": "ENVIRONMENT_CONFIG"
+  },
+  "description": "A flag documented as on in staging reverted to its default during a redeploy.",
+  "howSeeded": "Redeployed the config service without the environment overlay, so the flag fell back to its default.",
+  "decidingEvidence": "The remote-config audit trail showing the override present, then absent after redeploy, against a config file that still declares it on.",
+  "twinOf": "feature-flag-off-by-design",
+  "twinAxis": "Same flag, same off state, but here the state is an accident: the redeploy dropped the override.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

@@ -1,0 +1,14 @@
+{
+  "caseId": "auth-token-cached-in-static-field",
+  "seededClass": "TEST_CODE_DEFECT",
+  "seededSubclass": "TEARDOWN_LEAKAGE",
+  "expectedUnderRules": {
+    "FULL": "TEST_CODE_DEFECT"
+  },
+  "description": "A static auth token cached by one test class is reused, expired, by another under parallel execution.",
+  "howSeeded": "Restored the static token cache in AuthSupport and enabled parallel=classes in the TestNG suite.",
+  "decidingEvidence": "The test source showing a static token field populated by one test class and reused by another under parallel execution.",
+  "twinOf": "shared-account-left-cancelled",
+  "twinAxis": "Also state left behind by an earlier test, but the stale thing is the suite's own static field, so ownership keeps it in TEST_CODE_DEFECT.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

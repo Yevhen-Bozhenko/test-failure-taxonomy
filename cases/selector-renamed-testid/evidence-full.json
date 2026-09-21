@@ -1,0 +1,9 @@
+{
+  "caseId": "selector-renamed-testid",
+  "evidenceLevel": "FULL",
+  "errorMessage": "com.codeborne.selenide.ex.ElementNotFound: Element not found {[data-testid=submit-btn]}\nTimeout: 10 s.",
+  "stackTrace": "com.codeborne.selenide.ex.ElementNotFound: Element not found {[data-testid=submit-btn]}\nTimeout: 10 s.\n    at com.codeborne.selenide.impl.WebElementSource.createElementNotFoundError(WebElementSource.java:82)\n    at com.acme.tests.ui.pages.CheckoutPage.submitOrder(CheckoutPage.java:71)\n    at com.acme.tests.ui.checkout.CheckoutFlowTest.guestCheckoutCompletes(CheckoutFlowTest.java:44)",
+  "logs": "2026-09-17T13:44:08.220Z ui-tests INFO  CheckoutPage  page loaded, readyState=complete, 0 pending XHR\n2026-09-17T13:44:08.221Z ui-tests DEBUG CheckoutPage  DOM snapshot (excerpt):\n  <div class=\"checkout__actions\">\n    <button data-testid=\"submit-order-btn\" class=\"btn btn--primary\" type=\"submit\">Place order</button>\n  </div>\n2026-09-17T13:44:18.244Z ui-tests ERROR CheckoutPage  selector [data-testid=submit-btn] matched 0 elements after 10s",
+  "testCode": "private final SelenideElement submitButton = $(\"[data-testid=submit-btn]\");",
+  "testHistory": "Last green: build #2108. CheckoutPage.java unchanged since 2026-05-02. storefront commit 3f01d9e 'chore(a11y): normalise testids on checkout actions' landed in #2109."
+}

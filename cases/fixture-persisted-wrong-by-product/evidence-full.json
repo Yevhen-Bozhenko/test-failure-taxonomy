@@ -1,0 +1,11 @@
+{
+  "caseId": "fixture-persisted-wrong-by-product",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected total [90.00] but found [100.00]",
+  "stackTrace": "java.lang.AssertionError: expected total [90.00] but found [100.00]\n    at com.acme.tests.api.orders.DiscountTest.tenPercentDiscountApplied(DiscountTest.java:58)",
+  "httpRequest": "--- setup ---\nPOST /api/v1/orders HTTP/1.1\n{\"customerId\":\"CUST-3310\",\"currency\":\"USD\",\"items\":[{\"sku\":\"SEAT-ANNUAL\",\"qty\":1,\"unitPrice\":100.00}],\"discountCode\":\"WELCOME10\"}\n--- assertion under test ---\nGET /api/v1/orders/ORD-55310 HTTP/1.1",
+  "httpResponse": "--- setup ---\n201 {\"orderId\":\"ORD-55310\",\"discountCode\":\"WELCOME10\",\"discountAmount\":10.00,\"total\":90.00}\n--- assertion under test ---\n200 {\"orderId\":\"ORD-55310\",\"discountCode\":null,\"discountAmount\":0.00,\"total\":100.00}",
+  "logs": "2026-09-18T11:04:33.019Z orders-service INFO  OrderController  POST /api/v1/orders -> 201 ORD-55310\n2026-09-18T11:04:33.020Z orders-service DEBUG OrderMapper       toEntity(): discountCode not mapped\n2026-09-18T11:04:33.088Z orders-service DEBUG OrderRepository   insert order_id=ORD-55310 discount_code=NULL total=100.00",
+  "contractExcerpt": "orders-api v3.1, section 6.1: a successful order creation MUST persist the submitted `discountCode` and the response body MUST reflect the persisted record.",
+  "testHistory": "Last green: build #2110. DiscountTest.java unchanged since 2026-06-09. orders-service commit 1c7ff83 'refactor: simplify OrderMapper' landed in #2111."
+}

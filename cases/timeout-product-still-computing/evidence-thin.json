@@ -1,0 +1,5 @@
+{
+  "caseId": "timeout-product-still-computing",
+  "evidenceLevel": "THIN",
+  "errorMessage": "java.net.SocketTimeoutException: Read timed out"
+}

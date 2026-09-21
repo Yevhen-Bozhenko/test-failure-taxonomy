@@ -1,0 +1,15 @@
+{
+  "caseId": "timeout-request-never-arrived",
+  "seededClass": "ENVIRONMENT_CONFIG",
+  "seededSubclass": "INFRASTRUCTURE",
+  "expectedUnderRules": {
+    "FULL": "ENVIRONMENT_CONFIG",
+    "THIN": "INSUFFICIENT_DATA"
+  },
+  "description": "Read timeout on a reports call; the request never reached the service.",
+  "howSeeded": "Dropped egress from the CI subnet to the reports service for 60 seconds during the run.",
+  "decidingEvidence": "Gateway and service logs covering the window, neither of which records the request.",
+  "twinOf": "timeout-product-still-computing",
+  "twinAxis": "Identical client-side timeout; here no server-side record of the request exists.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

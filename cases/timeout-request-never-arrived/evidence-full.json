@@ -1,0 +1,11 @@
+{
+  "caseId": "timeout-request-never-arrived",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.net.SocketTimeoutException: Read timed out",
+  "stackTrace": "java.net.SocketTimeoutException: Read timed out\n    at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:288)\n    at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.execute(InternalExecRuntime.java:189)\n    at io.restassured.internal.RequestSpecificationImpl.get(RequestSpecificationImpl.groovy:159)\n    at com.acme.tests.api.reports.RevenueReportTest.monthlyRevenueReturns200(RevenueReportTest.java:38)",
+  "httpRequest": "GET /api/v1/reports/revenue?period=2026-08 HTTP/1.1\nHost: reports.staging.internal\n(client read timeout 30000ms)",
+  "httpResponse": "(none - no response received)",
+  "logs": "2026-09-18T02:14:00.002Z ci-runner INFO  RevenueReportTest  GET /api/v1/reports/revenue?period=2026-08\n2026-09-18T02:14:30.010Z ci-runner ERROR RevenueReportTest  read timed out after 30000ms\n--- gateway access log, 02:13:00Z to 02:15:00Z, filtered on /reports/revenue: 0 entries\n--- reports-service application log, 02:13:00Z to 02:15:00Z: no inbound request recorded; service healthy, 14 other requests served",
+  "testCode": "given().spec(reportsSpec).when().get(\"/api/v1/reports/revenue?period={p}\", period).then().statusCode(200);",
+  "testHistory": "Last green: build #2114, 2026-09-17. Test unchanged since 2026-02-11."
+}

@@ -1,0 +1,14 @@
+{
+  "caseId": "toast-assertion-without-wait",
+  "seededClass": "TEST_CODE_DEFECT",
+  "seededSubclass": "SYNCHRONIZATION",
+  "expectedUnderRules": {
+    "FULL": "TEST_CODE_DEFECT"
+  },
+  "description": "Assertion on a confirmation toast reads the DOM before the toast renders; passes locally, fails on the loaded CI runner.",
+  "howSeeded": "Removed the shouldBe(visible) wait from the toast assertion, leaving a bare text read immediately after the click.",
+  "decidingEvidence": "Server responded in 41ms and the toast rendered at +180ms, while the test read the DOM at +90ms with no wait condition.",
+  "twinOf": null,
+  "twinAxis": null,
+  "evidenceOrigin": "CONSTRUCTED"
+}

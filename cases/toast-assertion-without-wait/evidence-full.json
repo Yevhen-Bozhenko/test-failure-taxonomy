@@ -1,0 +1,11 @@
+{
+  "caseId": "toast-assertion-without-wait",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected [Order placed] but found []",
+  "stackTrace": "java.lang.AssertionError: expected [Order placed] but found []\n    at org.testng.Assert.assertEquals(Assert.java:131)\n    at com.acme.tests.ui.checkout.CheckoutFlowTest.confirmationToastShown(CheckoutFlowTest.java:96)",
+  "httpRequest": "POST /api/v1/orders HTTP/1.1\nHost: orders.staging.internal\nContent-Type: application/json",
+  "httpResponse": "{\n  \"status\": 201,\n  \"body\": {\n    \"orderId\": \"ORD-55291\",\n    \"state\": \"CONFIRMED\"\n  }\n}",
+  "logs": "2026-09-17T14:20:03.001Z ui-tests DEBUG click submit-order-btn\n2026-09-17T14:20:03.042Z orders-service INFO  POST /api/v1/orders -> 201 (41ms)\n2026-09-17T14:20:03.091Z ui-tests DEBUG read $(.toast__message).text() -> \"\"\n2026-09-17T14:20:03.181Z ui-tests DEBUG mutation: <div class=\"toast__message\">Order placed</div> inserted\n2026-09-17T14:20:03.182Z ui-tests INFO  runner load: 8 parallel workers, cpu 94%",
+  "testCode": "checkoutPage.submitOrder();\nassertEquals($(\".toast__message\").text(), \"Order placed\");",
+  "testHistory": "Intermittent since build #2090; fails on 6 of 20 CI runs, passes on every local run. CheckoutFlowTest.java last modified 2026-09-01 (commit 08c4b13 'speed up checkout test')."
+}

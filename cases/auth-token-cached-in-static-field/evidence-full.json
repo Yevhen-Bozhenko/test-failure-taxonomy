@@ -1,0 +1,11 @@
+{
+  "caseId": "auth-token-cached-in-static-field",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected status code <200> but was <401>",
+  "stackTrace": "java.lang.AssertionError: expected status code <200> but was <401>\n    at com.acme.tests.api.orders.OrderHistoryTest.userSeesOwnOrders(OrderHistoryTest.java:63)",
+  "httpRequest": "GET /api/v1/orders?mine=true HTTP/1.1\nHost: orders.staging.internal\nAuthorization: Bearer eyJhbGciOi...exp=1789... (issued 2026-09-18T08:02:11Z, ttl 900s)",
+  "httpResponse": "{\n  \"status\": 401,\n  \"body\": {\n    \"error\": \"TOKEN_EXPIRED\"\n  }\n}",
+  "logs": "2026-09-18T08:02:11.004Z ui-tests INFO  AuthSupport  token minted for qa.user+07@example.test, ttl 900s, cached in static field\n2026-09-18T08:02:11.005Z ui-tests INFO  TestNG       suite parallel=classes threads=6\n2026-09-18T08:19:48.771Z ui-tests DEBUG AuthSupport  cache hit, age 1057s\n2026-09-18T08:19:48.802Z identity-provider INFO  token validation failed: exp 2026-09-18T08:17:11Z < now",
+  "testCode": "public final class AuthSupport {\n    private static String cachedToken; // populated by whichever class runs first\n\n    public static String token() {\n        if (cachedToken == null) {\n            cachedToken = mintToken(QA_USER);\n        }\n        return cachedToken;\n    }\n}",
+  "testHistory": "Appeared in build #2115 when suite parallelism moved from 2 to 6 threads. AuthSupport.java last modified 2026-09-17 (commit c73e5aa 'reuse token to cut login calls')."
+}

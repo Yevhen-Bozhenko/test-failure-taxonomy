@@ -1,0 +1,14 @@
+{
+  "caseId": "timeout-bare",
+  "seededClass": "INSUFFICIENT_DATA",
+  "seededSubclass": null,
+  "expectedUnderRules": {
+    "FULL": "INSUFFICIENT_DATA"
+  },
+  "description": "The same timeout with nothing else attached - no logs, no response, no history.",
+  "howSeeded": "Collected from a run whose log shipper was down, so only the client-side exception survives.",
+  "decidingEvidence": "The server-side log for this request: whether it arrived, and whether it was still executing at the client deadline.",
+  "twinOf": null,
+  "twinAxis": null,
+  "evidenceOrigin": "CONSTRUCTED"
+}

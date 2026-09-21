@@ -1,0 +1,14 @@
+{
+  "caseId": "hardcoded-id-typo-never-existed",
+  "seededClass": "TEST_CODE_DEFECT",
+  "seededSubclass": "WRONG_REFERENCE",
+  "expectedUnderRules": {
+    "FULL": "TEST_CODE_DEFECT"
+  },
+  "description": "A customer id hard-coded in the test points at a customer that has never existed.",
+  "howSeeded": "Edited the hard-coded customer id in CustomerProfileTest from CUST-1188 to CUST-1881, an id no customer has ever had.",
+  "decidingEvidence": "The customer audit trail showing no creation or deletion of CUST-1881, together with an edit to the test after its last green run.",
+  "twinOf": "hardcoded-id-row-purged",
+  "twinAxis": "The same 404 on a hard-coded customer id. There the id named a real customer the retention job purged; here the id names a customer that never existed.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

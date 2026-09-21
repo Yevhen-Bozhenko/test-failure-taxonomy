@@ -1,0 +1,11 @@
+{
+  "caseId": "invoice-total-no-independent-statement",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: Invoice total mismatch expected [100.00] but found [99.99]",
+  "stackTrace": "java.lang.AssertionError: Invoice total mismatch expected [100.00] but found [99.99]\n    at org.testng.Assert.assertEquals(Assert.java:131)\n    at com.acme.tests.api.billing.InvoiceRoundingTest.annualSeatInvoiceTotal(InvoiceRoundingTest.java:41)",
+  "httpRequest": "GET /api/v1/invoices/INV-20260915-0051 HTTP/1.1\nHost: billing.staging.internal\nAccept: application/json",
+  "httpResponse": "{\n  \"status\": 200,\n  \"body\": {\n    \"invoiceId\": \"INV-20260915-0051\",\n    \"currency\": \"USD\",\n    \"lineItems\": [\n      {\n        \"sku\": \"SEAT-ANNUAL\",\n        \"amount\": 50.005\n      },\n      {\n        \"sku\": \"SEAT-ANNUAL\",\n        \"amount\": 49.995\n      }\n    ],\n    \"total\": 99.99\n  }\n}",
+  "logs": "2026-09-15T11:02:44.907Z billing-service INFO  InvoiceAssembler  assembled INV-20260915-0051 in 2ms",
+  "testCode": "@Test\npublic void annualSeatInvoiceTotal() {\n    InvoiceResponse invoice = billingClient.getInvoice(INVOICE_ID);\n    assertEquals(invoice.getTotal(), new BigDecimal(\"100.00\"), \"Invoice total mismatch\");\n}",
+  "testHistory": "InvoiceRoundingTest.java added 2026-09-15 (commit 7d1aa40). No prior green build for this test."
+}

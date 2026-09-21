@@ -1,0 +1,11 @@
+{
+  "caseId": "timeout-product-still-computing",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.net.SocketTimeoutException: Read timed out",
+  "stackTrace": "java.net.SocketTimeoutException: Read timed out\n    at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:288)\n    at io.restassured.internal.RequestSpecificationImpl.get(RequestSpecificationImpl.groovy:159)\n    at com.acme.tests.api.reports.RevenueReportTest.monthlyRevenueReturns200(RevenueReportTest.java:38)",
+  "httpRequest": "GET /api/v1/reports/revenue?period=2026-08 HTTP/1.1\nHost: reports.staging.internal\n(client read timeout 30000ms)",
+  "httpResponse": "(none - no response received)",
+  "logs": "2026-09-18T03:01:00.114Z gateway        INFO  GET /api/v1/reports/revenue?period=2026-08 routed to reports-service-7c9f\n2026-09-18T03:01:00.121Z reports-service INFO  RevenueController  accepted request corr=9f13ab\n2026-09-18T03:01:00.130Z reports-service DEBUG LedgerRepository   executing aggregate over ledger_entry\n2026-09-18T03:01:30.118Z ci-runner       ERROR RevenueReportTest  read timed out after 30000ms\n2026-09-18T03:02:47.559Z reports-service WARN  LedgerRepository   slow query 107418ms corr=9f13ab rows_scanned=41,208,663\n2026-09-18T03:02:47.561Z reports-service INFO  RevenueController  corr=9f13ab completed, client already gone",
+  "testCode": "given().spec(reportsSpec).when().get(\"/api/v1/reports/revenue?period={p}\", period).then().statusCode(200);",
+  "testHistory": "Last green: build #2114, 2026-09-17, same endpoint served in 1.2s. Test unchanged since 2026-02-11."
+}

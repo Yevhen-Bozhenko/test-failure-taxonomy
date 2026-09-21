@@ -1,0 +1,9 @@
+{
+  "caseId": "feature-flag-off-by-design",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected element [.bulk-export] to be visible",
+  "stackTrace": "at com.acme.tests.ui.reports.BulkExportTest.exportButtonVisible(BulkExportTest.java:29)",
+  "logs": "2026-09-19T09:00:12.774Z reports-ui INFO  FlagClient  evaluated bulk-export-v2=false env=staging source=remote-config\n2026-09-19T09:00:12.801Z reports-ui DEBUG Toolbar     bulk export control not rendered (flag off)\n--- config/staging/flags.yaml (HEAD): bulk-export-v2: false   # off in staging until GA, see RFC-214",
+  "testCode": "$(\".bulk-export\").shouldBe(visible);",
+  "testHistory": "BulkExportTest.java added 2026-09-19. No prior green build. RFC-214 dated 2026-08-30 states the flag stays off in staging until GA."
+}

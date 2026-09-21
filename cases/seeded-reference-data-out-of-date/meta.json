@@ -1,0 +1,14 @@
+{
+  "caseId": "seeded-reference-data-out-of-date",
+  "seededClass": "TEST_DATA",
+  "seededSubclass": "MISSING_FIXTURE",
+  "expectedUnderRules": {
+    "FULL": "TEST_DATA"
+  },
+  "description": "Environment seeded with last year's tax rate table; the test asserts the current rate.",
+  "howSeeded": "Restored the staging database from a snapshot taken before the annual tax rate refresh.",
+  "decidingEvidence": "The seed manifest, which shows the tax table loaded with the prior year's rates while the test asserts the current year's.",
+  "twinOf": null,
+  "twinAxis": null,
+  "evidenceOrigin": "CONSTRUCTED"
+}

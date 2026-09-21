@@ -1,0 +1,14 @@
+{
+  "caseId": "shared-account-left-cancelled",
+  "seededClass": "TEST_DATA",
+  "seededSubclass": "STALE_STATE",
+  "expectedUnderRules": {
+    "FULL": "TEST_DATA"
+  },
+  "description": "Shared test account's subscription was cancelled by the nightly suite and never restored.",
+  "howSeeded": "Let the cancellation test run against the shared account without its restore step, then ran the renewal test.",
+  "decidingEvidence": "The audit log showing the subscription was cancelled by an earlier run, combined with the rule that product-owned rows are TEST_DATA regardless of who staled them.",
+  "twinOf": "auth-token-cached-in-static-field",
+  "twinAxis": "Both fail on state an earlier run left behind. Here the stale thing is a row the product owns, so ownership sends it to TEST_DATA.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

@@ -1,0 +1,5 @@
+{
+  "caseId": "status-enum-case-changed-deliberately",
+  "evidenceLevel": "THIN",
+  "errorMessage": "java.lang.AssertionError: expected [ACTIVE] but found [active]"
+}

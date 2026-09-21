@@ -1,0 +1,14 @@
+{
+  "caseId": "selector-renamed-testid",
+  "seededClass": "TEST_CODE_DEFECT",
+  "seededSubclass": "SELECTOR_BRITTLENESS",
+  "expectedUnderRules": {
+    "FULL": "TEST_CODE_DEFECT"
+  },
+  "description": "Checkout submit button not found; the control exists under a renamed test id.",
+  "howSeeded": "Renamed data-testid from submit-btn to submit-order-btn in the checkout component without updating the page object.",
+  "decidingEvidence": "The DOM snapshot, which shows the control present under a different data-testid.",
+  "twinOf": null,
+  "twinAxis": null,
+  "evidenceOrigin": "CONSTRUCTED"
+}

@@ -1,0 +1,15 @@
+{
+  "caseId": "hardcoded-id-row-purged",
+  "seededClass": "TEST_DATA",
+  "seededSubclass": "MISSING_FIXTURE",
+  "expectedUnderRules": {
+    "FULL": "TEST_DATA"
+  },
+  "description": "A customer ID hard-coded in the test file points at a row the retention job deleted.",
+  "howSeeded": "Ran the 24-month retention job, which purged CUST-1188, the account hard-coded in the test.",
+  "decidingEvidence": "The retention job log showing CUST-1188 purged, against a test that was green on build #2095 and is unchanged since.",
+  "twinOf": "hardcoded-id-typo-never-existed",
+  "twinAxis": "The same 404 on a hard-coded customer id. Here the id named a real customer that was purged; there the id names a customer that never existed.",
+  "disputeNote": "Resolved 2026-09-21 in TAXONOMY.md: a literal the test uses to look something up is a reference, not a statement of what is correct, and a reference that names a record that was supposed to be there, now removed, is TEST_DATA.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

@@ -1,0 +1,15 @@
+{
+  "caseId": "field-absent-because-old-build-deployed",
+  "seededClass": "ENVIRONMENT_CONFIG",
+  "seededSubclass": "CONFIG_DRIFT",
+  "expectedUnderRules": {
+    "FULL": "ENVIRONMENT_CONFIG",
+    "THIN": "INSUFFICIENT_DATA"
+  },
+  "description": "Test asserts a field added in the current build; staging is still running the previous artifact.",
+  "howSeeded": "Blocked the staging deploy step so the environment kept build #2109 while the test ran against the #2110 contract.",
+  "decidingEvidence": "The /actuator/info build number, which is behind the build the pipeline believes it deployed.",
+  "twinOf": "status-enum-case-changed-deliberately",
+  "twinAxis": "Identical 'the response does not match the test' shape; here the product code is correct and the environment is running yesterday's artifact.",
+  "evidenceOrigin": "CONSTRUCTED"
+}

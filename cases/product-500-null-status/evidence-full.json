@@ -1,0 +1,12 @@
+{
+  "caseId": "product-500-null-status",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected status code <200> but was <500>",
+  "stackTrace": "java.lang.AssertionError: expected status code <200> but was <500>\n    at com.acme.tests.api.accounts.AccountDetailTest.accountReturnsStatus(AccountDetailTest.java:47)",
+  "httpRequest": "GET /api/v1/accounts/ACC-48392 HTTP/1.1\nHost: accounts.staging.internal\nAuthorization: Bearer eyJhbGciOi...",
+  "httpResponse": "{\n  \"status\": 500,\n  \"body\": {\n    \"error\": \"INTERNAL_ERROR\",\n    \"traceId\": \"5b2e91c0\"\n  }\n}",
+  "logs": "2026-09-19T10:41:07.302Z accounts-service INFO  AccountController  GET /api/v1/accounts/ACC-48392 traceId=5b2e91c0\n2026-09-19T10:41:07.306Z accounts-service DEBUG AccountRepository  ACC-48392 state=PENDING_VERIFICATION status=null\n2026-09-19T10:41:07.309Z accounts-service ERROR AccountService     unhandled exception traceId=5b2e91c0\njava.lang.NullPointerException: Cannot invoke \"com.acme.accounts.AccountStatus.getCode()\" because the return value of \"com.acme.accounts.Account.getStatus()\" is null\n    at com.acme.accounts.AccountService.mapAccount(AccountService.java:214)\n    at com.acme.accounts.AccountController.getAccount(AccountController.java:58)\n2026-09-19T10:41:08.120Z accounts-service INFO  AccountController  GET /api/v1/accounts/ACC-48390 -> 200 (8ms)",
+  "testCode": "@Test\npublic void accountReturnsStatus() {\n    given().spec(accountsSpec)\n        .when().get(\"/api/v1/accounts/{id}\", ACCOUNT_ID)\n        .then().statusCode(200);\n}",
+  "contractExcerpt": "accounts-api v2, section 3.4: an account in PENDING_VERIFICATION has no `status` until verification completes. The `status` field is omitted from the response for such accounts; it MUST NOT cause the request to fail.",
+  "testHistory": "Last green: build #2119. AccountDetailTest.java unchanged since 2026-03-02. accounts-service commit 7aa3e0d 'refactor: inline status mapping in mapAccount' landed in #2120."
+}

@@ -1,0 +1,14 @@
+{
+  "caseId": "passes-on-retry-nothing-else",
+  "seededClass": "INSUFFICIENT_DATA",
+  "seededSubclass": null,
+  "expectedUnderRules": {
+    "FULL": "INSUFFICIENT_DATA"
+  },
+  "description": "Test failed once and passed on retry; the report retains only the retry outcome.",
+  "howSeeded": "Enabled the TestNG retry analyzer with a reporter that overwrites the first attempt's output.",
+  "decidingEvidence": "Any evidence from the first failure beyond the fact that it failed: a stack trace, the response, or a server-side log for that attempt.",
+  "twinOf": null,
+  "twinAxis": null,
+  "evidenceOrigin": "CONSTRUCTED"
+}

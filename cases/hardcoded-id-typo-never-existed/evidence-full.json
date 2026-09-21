@@ -1,0 +1,11 @@
+{
+  "caseId": "hardcoded-id-typo-never-existed",
+  "evidenceLevel": "FULL",
+  "errorMessage": "java.lang.AssertionError: expected status code <200> but was <404>",
+  "stackTrace": "at com.acme.tests.api.customers.CustomerProfileTest.profileReturnsContactDetails(CustomerProfileTest.java:33)",
+  "httpRequest": "GET /api/v1/customers/CUST-1881 HTTP/1.1",
+  "httpResponse": "{\n  \"status\": 404,\n  \"body\": {\n    \"error\": \"CUSTOMER_NOT_FOUND\"\n  }\n}",
+  "logs": "2026-09-20T08:02:11.618Z customers-service INFO  GET /api/v1/customers/CUST-1881 -> 404\n--- customer audit trail, search CUST-1881: no creation, update or deletion events\n--- retention job, last run 2026-09-14: 812 records purged, CUST-1881 not among them",
+  "testCode": "private static final String CUSTOMER_ID = \"CUST-1881\";",
+  "testHistory": "Last green: build #2130, 2026-09-18. CustomerProfileTest.java modified 2026-09-19 (commit e41b9a2 'tidy test constants')."
+}
