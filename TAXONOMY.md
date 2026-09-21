@@ -3,7 +3,8 @@
 ## Evidence
 
 The decision rules below are written against the evidence a triaging engineer actually has:
-error message, stack trace, logs, HTTP request/response, and the test code itself.
+error message, stack trace, logs, HTTP request/response, the test code itself, its history, and any
+contract, specification or release note that says what correct behaviour is.
 
 What each kind can and cannot establish on its own:
 
@@ -15,8 +16,8 @@ in the message itself separates the two.
 **Stack trace.** Establishes the site of the failure and whose package it is in. Does not
 establish the origin. Product frames at the top are routine when the test handed the product
 bad input; test frames at the top are routine when the product returned a shape the test did
-not expect. Its most reliable signal is negative: a bare assertion failure with no trace means
-the product completed normally and only the comparison failed, which rules out the crash-shaped
+not expect. Its most reliable signal is negative: a bare assertion failure with no product frames
+in its trace means the product completed normally and only the comparison failed, which rules out the crash-shaped
 readings of every class.
 
 **Logs.** Establish sequence and server-side state around the failure — the one evidence type
@@ -40,18 +41,53 @@ test of being wrong rather than merely unlucky. Shows hard-coded expectations, o
 assumptions, shared mutable state, and inadequate waits. Does not establish what the product was
 supposed to do — a test's expectation may simply be a stale reading of the spec.
 
+**Test history.** Establishes what changed and when: the last build on which this test passed,
+and what moved on either side since — the product, the test file, the environment. It is the
+only evidence here that speaks to *which side changed*, rather than to what either side did on
+this run. A test untouched since it last passed, against a product that has changed, points at
+the product; a test edited since points at the test. Does not establish causation: a deploy
+landing near the failure is not proof that the deploy caused it. It is also silent for a test
+that has never passed, which has no history to compare against.
+
+This is one of the two statements "other than the test's own assertion" that PRODUCT_DEFECT
+requires; a contract is the other. Without one of them, a bare disagreement between an assertion
+and a response cannot reach PRODUCT_DEFECT at all, however ordinary the failure looks, and falls
+to INSUFFICIENT_DATA. With test history, a test that was green on the previous build and has not
+been edited since is independent evidence that the expectation was once correct and the product
+is what moved.
+
+**Contract and release notes.** Establish what correct behaviour is without relying on the test:
+an API contract or specification, or a release note or changelog recording a deliberate change.
+This is what lets a documented invariant indict the product, and what the staleness rule requires
+before calling a test out of date. Does not establish that either side follows it, and a
+contract can itself be out of date or silent on the case in question.
+
 Request and response together are the strongest pair in this set, because only they separate
 input from output without requiring intent.
 
 ## Classes
 
-Work the questions in this order and stop at the first one that answers:
+Every rule here, and every tie-break after it, is an application of one question: which artifact
+is the wrong one? A failure surfaces wherever the assertion happens to sit, and that is rarely
+where the fault is. Four artifacts can be wrong, and each names a class: the product; the test
+itself — its logic, the values it supplies, and any state it carries between runs; a record the
+test consumed; or the environment it ran in. The tie-breaks exist because some failures present
+two candidate artifacts at once; each names which of the two is wrong, not which is nearer the
+failure. When the evidence cannot identify which artifact is wrong, and the answer would change
+the class, that is INSUFFICIENT_DATA.
 
-1. Did the test's action reach the product at all? If not — **ENVIRONMENT_CONFIG**.
-2. Was what the test sent both valid and what it meant to send? If not — **TEST_CODE_DEFECT**.
-3. Was the state it read or built on correct? If not — **TEST_DATA**.
-4. Given a valid action against correct state, was the product's answer wrong? If so —
-   **PRODUCT_DEFECT**.
+Work the questions in this order and stop at the first one that answers. They are the question
+above asked as an order of elimination: each one rules out an artifact.
+
+1. Is the environment wrong — did it stop the action, or serve a different build or configuration
+   from the one intended? If so — **ENVIRONMENT_CONFIG**.
+2. Did the test do something other than it meant to, or something invalid? If so —
+   **TEST_CODE_DEFECT**.
+3. Was a record the test consumed, one it did not create during this run, wrong or missing? If so
+   — **TEST_DATA**.
+4. With a valid action against correct state in the intended environment, which is wrong — the
+   product's answer, or the test's expectation? The product's — **PRODUCT_DEFECT**; the
+   expectation — **TEST_CODE_DEFECT**.
 5. If the evidence cannot answer one of these and the answer would change the class —
    **INSUFFICIENT_DATA**.
 
@@ -69,7 +105,8 @@ The application under test is genuinely wrong.
 - Do not choose it when: the request was malformed or the action was not the one the test
   intended (TEST_CODE_DEFECT); the input came from a fixture that was already wrong
   (TEST_DATA); the failure is a transport error or a timeout with no product frames and no
-  server-side record of the request arriving (ENVIRONMENT_CONFIG); or the *only* statement of
+  server-side record of the request arriving, or the environment was running a different build or
+  configuration from the one intended (ENVIRONMENT_CONFIG); or the *only* statement of
   what "correct" means is the test's own expectation, with nothing independent to check it
   against (INSUFFICIENT_DATA).
 
@@ -91,10 +128,11 @@ The test itself is wrong.
   corresponding change to the contract; or the test's data was correct as written and the
   environment supplied something different at run time.
 
-Leftover state only lands here when the suite owns it. If what an earlier run left behind is a
-row the product owns — an account, an order, a subscription — this class does not apply, and the
-stale-account tie-break below decides between TEST_DATA and ENVIRONMENT_CONFIG. Who caused the
-staleness never decides the class; where the stale thing lives always does.
+Leftover state only lands here when it is state the test carries between runs. If what an earlier
+run left behind is a record the test consumed — an account, an order, a subscription — then that
+record is the wrong artifact, this class does not apply, and the stale-account tie-break below
+decides between TEST_DATA and ENVIRONMENT_CONFIG. Who caused the staleness never decides the
+class; which artifact is stale always does.
 
 A test that is merely stale — the product changed deliberately and the test was never updated —
 is a wrong test, so it is TEST_CODE_DEFECT. But that requires evidence that the change was
@@ -112,10 +150,22 @@ The data the test relied on was wrong or in a bad state.
   terminal state by an earlier run; a seed set whose contents contradict the test's premise.
 - Do not choose it when: the bad data is itself the product's output (see the tie-break below);
   the data is correct but unreachable because the store is down (ENVIRONMENT_CONFIG); or the
-  "data" is a literal written in the test source.
+  "data" is a value the test supplies as its own statement of what is correct.
 
 That last line is the boundary that keeps this class from swallowing TEST_CODE_DEFECT. Data is
-what the test *consumes*; a wrong constant in the test file is not data, it is code.
+what the test consumes to set up the case it is checking. A value the test checks the product's
+answer against is its own statement of what is correct, and that is code — whether it is written
+inline, built by a helper, or kept in a separate expected-values file.
+
+A literal the test uses to look something up is a reference rather than a statement, and a
+reference is not the wrong artifact when the record behind it is. If the reference names a record
+that was supposed to be there — one the seed data, a fixture, or an earlier setup step was meant to
+provide — and that record is missing, removed or changed, the fault is the record's —
+**TEST_DATA** — whether or not this particular test ever passed. If the reference names a record
+that was never supposed to exist, the test is asking for the wrong thing and is itself the wrong
+artifact — **TEST_CODE_DEFECT**. When the evidence does not say which, the case is
+**INSUFFICIENT_DATA**, and the missing piece is whatever records which identifier the test should
+have found.
 
 ### ENVIRONMENT_CONFIG
 
@@ -151,7 +201,8 @@ The ambiguous pairs, decided here once.
 
 ### Stale test account state — TEST_DATA or ENVIRONMENT_CONFIG
 
-Ask whether the thing that is stale is a record the product owns or a facility the test runs on.
+Ask which artifact is wrong: the record the test consumed, or the environment it read that record
+through.
 
 An account, its balance, its subscription tier, its permissions — these are rows in the
 product's own data model, so stale values in them are **TEST_DATA**, even when the staleness was
