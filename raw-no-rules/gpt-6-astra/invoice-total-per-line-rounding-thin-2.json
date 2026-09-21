@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaI2RwUpJsOwUeK7sVsix0H8EY2X",
+  "object": "chat.completion",
+  "created": 1790004734,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The assertion reports an invoice total of 99.99 against an expected 100.00, but it does not establish which value is correct. Without invoice inputs, calculation and rounding rules, or test logic, the mismatch cannot be confidently attributed to the application, test, data, or environment.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 243,
+    "completion_tokens": 75,
+    "total_tokens": 318,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

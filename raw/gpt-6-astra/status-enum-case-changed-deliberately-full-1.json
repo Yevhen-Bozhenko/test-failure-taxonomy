@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa8JtdLpkDVhkgAIYt178Oqj5omg",
+  "object": "chat.completion",
+  "created": 1790004131,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_CODE_DEFECT\",\"reasoning\":\"The staleness rule applies: a test that retains an old expectation after a documented deliberate product change is TEST_CODE_DEFECT. The v2.4.0 release notes require lowercase enum responses, so the returned \\\"active\\\" is correct and the unchanged test's hard-coded \\\"ACTIVE\\\" expectation is stale.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3969,
+    "completion_tokens": 77,
+    "total_tokens": 4046,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3966,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa8x5gy56gJnHcI86OWtleE2hUpg",
+  "object": "chat.completion",
+  "created": 1790004171,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"PRODUCT_DEFECT\",\"reasoning\":\"The timeout tie-break assigns PRODUCT_DEFECT when server logs show the request arrived and was still being processed when the client timed out. The service accepted this request and spent approximately 107 seconds executing the ledger aggregate, outlasting the 30-second client timeout. The unchanged test passed on the previous build with a 1.2-second response, providing independent history and ruling against a timeout shorter than the operation's established duration.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4089,
+    "completion_tokens": 98,
+    "total_tokens": 4187,
+    "prompt_tokens_details": {
+      "cached_tokens": 4086,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

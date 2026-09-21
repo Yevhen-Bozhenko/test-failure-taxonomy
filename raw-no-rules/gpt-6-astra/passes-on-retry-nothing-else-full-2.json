@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaICgMf7iqf0StUqUb5dsguKRt08",
+  "object": "chat.completion",
+  "created": 1790004744,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The assertion failed on the first attempt and passed on retry, showing intermittent behavior but not its cause. The generic assertion error and history of flakiness cannot distinguish an application defect from a test, data, or environment issue, and no first-attempt artifacts were retained to investigate further.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 379,
+    "completion_tokens": 73,
+    "total_tokens": 452,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

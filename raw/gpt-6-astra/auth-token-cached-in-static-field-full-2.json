@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa4XO0GOeLx46e2aH1KdGRD3eKE2",
+  "object": "chat.completion",
+  "created": 1790003897,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_CODE_DEFECT\",\"reasoning\":\"The rule for shared state in the suite’s own machinery decides this: AuthSupport caches a token in a static field and reuses it without checking expiration or refreshing it. The logs show the test reused that token at age 1057 seconds despite its 900-second TTL, and the identity provider rejected it as expired, producing the 401 TOKEN_EXPIRED response.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4069,
+    "completion_tokens": 88,
+    "total_tokens": 4157,
+    "prompt_tokens_details": {
+      "cached_tokens": 4066,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

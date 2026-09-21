@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa7BMQxopCH6nMCjPz9ATUvLqns4",
+  "object": "chat.completion",
+  "created": 1790004061,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"PRODUCT_DEFECT\",\"reasoning\":\"The request retrieved an account in a valid state, but the product's response violated the contract: PENDING_VERIFICATION accounts legitimately have no status, and this MUST NOT cause the request to fail. Server logs show AccountService.mapAccount dereferencing that null status and producing the observed 500, so the wrong artifact is the product's mapping logic, not the account record or test expectation.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4181,
+    "completion_tokens": 91,
+    "total_tokens": 4272,
+    "prompt_tokens_details": {
+      "cached_tokens": 4178,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

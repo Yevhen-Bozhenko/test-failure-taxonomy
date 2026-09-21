@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaITmccwPcAN1j8lY7AfhroMa6hH",
+  "object": "chat.completion",
+  "created": 1790004761,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_DATA\",\"reasoning\":\"Staging's tax reference data was stale after restoration from a 2025 snapshot, and the 2026 rate refresh was never replayed into staging. The repository lookup explicitly returned the old 7.75 rate, which the API applied correctly; the unchanged test last passed before the restore, supporting bad reference data rather than a product or test-code defect.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 566,
+    "completion_tokens": 85,
+    "total_tokens": 651,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

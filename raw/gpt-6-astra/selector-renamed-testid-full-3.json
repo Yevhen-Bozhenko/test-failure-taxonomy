@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa7iOdFfSsVT84TfexxRedBuRIaG",
+  "object": "chat.completion",
+  "created": 1790004094,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_CODE_DEFECT\",\"reasoning\":\"The TEST_CODE_DEFECT rule applies because the test uses a locator that no longer matches: it searches for [data-testid=submit-btn], while the loaded DOM contains the submit button with data-testid=\\\"submit-order-btn\\\". The storefront commit explicitly records deliberate normalization of checkout test IDs, while CheckoutPage.java remained unchanged, identifying a stale test locator rather than a product regression.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3999,
+    "completion_tokens": 134,
+    "total_tokens": 4133,
+    "prompt_tokens_details": {
+      "cached_tokens": 3996,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 38,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

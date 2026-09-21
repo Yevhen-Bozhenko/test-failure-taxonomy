@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa7JAA61fbLBC6kv8y4nU4s6yCsH",
+  "object": "chat.completion",
+  "created": 1790004069,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_DATA\",\"reasoning\":\"The stale-record rule applies: the wrong artifact is inherited reference data in the product's tax_rate table, not the environment through which it was read. Logs show staging was restored from an old snapshot and never received the 2026 rate refresh; the product used the stored 7.75 rate consistently, while the unchanged test last passed before the restore.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3965,
+    "completion_tokens": 84,
+    "total_tokens": 4049,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3962,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

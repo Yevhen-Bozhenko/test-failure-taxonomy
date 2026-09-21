@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa5effBohCggBlUqCAe4cSGsKuMa",
+  "object": "chat.completion",
+  "created": 1790003966,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The missing-record reference rule leaves this between TEST_DATA if CUST-1881 was supposed to be provided by a fixture or seed, and TEST_CODE_DEFECT if the test references an identifier that was never supposed to exist. The 404, absent audit events, and recent constants edit do not establish which identifier the test should use; the deciding evidence is the fixture or seed definition recording the intended customer identifier.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3891,
+    "completion_tokens": 98,
+    "total_tokens": 3989,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3888,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

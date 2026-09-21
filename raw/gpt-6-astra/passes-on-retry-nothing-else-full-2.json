@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa6yMyn6hxIJI8VqxHIgP6Id8si1",
+  "object": "chat.completion",
+  "created": 1790004048,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The passing-retry rule decides this case: the logs show only a failed assertion followed by a successful retry, which does not identify the wrong artifact. TEST_CODE_DEFECT and PRODUCT_DEFECT remain indistinguishable; an attempt-1 execution trace showing the test's wait and assertion timing alongside the product's cart-badge updates would distinguish an inadequate test wait from incorrect product behavior.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3778,
+    "completion_tokens": 92,
+    "total_tokens": 3870,
+    "prompt_tokens_details": {
+      "cached_tokens": 3775,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

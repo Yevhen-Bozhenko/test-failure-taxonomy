@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa7YffApd3yWaUqQEF6HejJt7E9d",
+  "object": "chat.completion",
+  "created": 1790004084,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_CODE_DEFECT\",\"reasoning\":\"The test uses a locator that no longer matches: its selector targets data-testid=\\\"submit-btn\\\", while the loaded DOM contains the submit button as data-testid=\\\"submit-order-btn\\\". The storefront commit explicitly normalising checkout test IDs establishes a deliberate change, so the unchanged page-object locator is stale under the TEST_CODE_DEFECT rule.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3999,
+    "completion_tokens": 123,
+    "total_tokens": 4122,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3996,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 36,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

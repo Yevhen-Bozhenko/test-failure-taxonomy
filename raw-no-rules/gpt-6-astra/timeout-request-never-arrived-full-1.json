@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaKE0hAdhepYPHZoGUnXhYdQOsRW",
+  "object": "chat.completion",
+  "created": 1790004870,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"ENVIRONMENT_CONFIG\",\"reasoning\":\"The client timed out without a response, and neither the gateway nor reports-service recorded the request during the relevant window, pointing to a connectivity or routing problem before the application. The reports service remained healthy and served 14 other requests, supporting an infrastructure/configuration failure rather than a report endpoint defect, though the exact failing component is not identified.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 626,
+    "completion_tokens": 126,
+    "total_tokens": 752,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 38,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

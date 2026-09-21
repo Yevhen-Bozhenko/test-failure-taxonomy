@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaHaZSiMV4uG5kUz3U4A89fGVvp4",
+  "object": "chat.completion",
+  "created": 1790004706,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The returned line amounts sum to 100.00 before rounding, but the response total is 99.99; without the required rounding policy, this does not establish whether the application or the test expectation is wrong. The test hard-codes 100.00 and has no prior green build, and the evidence does not establish that the referenced invoice is valid test data.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 617,
+    "completion_tokens": 152,
+    "total_tokens": 769,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 56,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

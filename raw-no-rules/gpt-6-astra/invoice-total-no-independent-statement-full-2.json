@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaHVGsuDYn8dXJkZt4ho5wfHDNsX",
+  "object": "chat.completion",
+  "created": 1790004701,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The returned line-item amounts sum to 100.00, but the invoice total is 99.99; without the required rounding policy, this does not establish whether the application or the test's expectation is wrong. The test hard-codes 100.00 and has no prior green build, and the evidence does not establish how this invoice's data was prepared.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 617,
+    "completion_tokens": 177,
+    "total_tokens": 794,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 82,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

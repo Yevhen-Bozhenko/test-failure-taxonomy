@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaGLlXgXaAFaAp0wX7rk6It9jEjX",
+  "object": "chat.completion",
+  "created": 1790004629,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"ENVIRONMENT_CONFIG\",\"reasoning\":\"The redeploy from revision 88 to 89 left the staging overlay path unmounted and reduced active overrides to zero. The reports UI then evaluated bulk-export-v2=false from the default, despite the staging configuration enabling it, explaining why the export button was not visible.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 471,
+    "completion_tokens": 68,
+    "total_tokens": 539,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

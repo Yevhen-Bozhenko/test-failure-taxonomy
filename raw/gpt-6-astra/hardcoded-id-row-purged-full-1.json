@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa5TaSJb4U3ROGrxD2KZgXZYHbU1",
+  "object": "chat.completion",
+  "created": 1790003955,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_DATA\",\"reasoning\":\"The wrong artifact is a pre-existing record the test consumed, not the test's hard-coded reference: the unchanged test last passed before retention logs explicitly show CUST-1188 was purged. The subsequent GET returned CUSTOMER_NOT_FOUND for that same identifier, so the missing-record rule makes this TEST_DATA rather than a product or environment defect.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3897,
+    "completion_tokens": 81,
+    "total_tokens": 3978,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3894,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

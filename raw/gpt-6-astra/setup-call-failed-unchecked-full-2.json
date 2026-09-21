@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa81It6e4AMUCuZTOt5JgLzLUwXP",
+  "object": "chat.completion",
+  "created": 1790004113,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_CODE_DEFECT\",\"reasoning\":\"The unchecked-setup rule decides this: when fixture creation fails and the test carries on, the fault is TEST_CODE_DEFECT. The setup POST omitted currency and returned 422, but createOrder() extracted orderId without checking success, leading to GET /api/v1/orders/null and the asserted 404. The recorded change requiring currency also establishes that the creation requirement changed deliberately.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4001,
+    "completion_tokens": 91,
+    "total_tokens": 4092,
+    "prompt_tokens_details": {
+      "cached_tokens": 3998,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa9YItXwbnqeWGU1KT3pqYu1LGSl",
+  "object": "chat.completion",
+  "created": 1790004208,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_CODE_DEFECT\",\"reasoning\":\"The inadequate-wait rule applies: the test code reads and asserts the toast text immediately after submitting the order, without waiting for it to appear. Logs show the read returned empty at 14:20:03.091, while the expected 'Order placed' toast was inserted at 14:20:03.181; the high runner load does not establish that the environment stopped the action.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4033,
+    "completion_tokens": 94,
+    "total_tokens": 4127,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 4030,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa57YSzvG1vFxbN6IoYXDieK7yJp",
+  "object": "chat.completion",
+  "created": 1790003933,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The error message establishes only that the assertion expected 'renewalReminderAt' and did not find it; it does not establish whether that expectation was correct. The case sits between PRODUCT_DEFECT and TEST_CODE_DEFECT, and the deciding missing evidence is an API contract specifying whether this response must contain that key.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3642,
+    "completion_tokens": 78,
+    "total_tokens": 3720,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3639,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

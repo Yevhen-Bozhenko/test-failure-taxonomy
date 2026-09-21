@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaIHhSAEOfZgQK2XmluTeFeFILcd",
+  "object": "chat.completion",
+  "created": 1790004749,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"PRODUCT_DEFECT\",\"reasoning\":\"The API contract explicitly permits PENDING_VERIFICATION accounts to have no status and requires omitting that field without failing the request. The logs show AccountService.mapAccount dereferencing the valid null status for ACC-48392, causing an unhandled NullPointerException and HTTP 500 instead of 200.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 782,
+    "completion_tokens": 74,
+    "total_tokens": 856,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

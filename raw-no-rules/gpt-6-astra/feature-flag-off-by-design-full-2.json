@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaGAvwvofoRvpgS8dVFykT5ryxDk",
+  "object": "chat.completion",
+  "created": 1790004618,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_CODE_DEFECT\",\"reasoning\":\"The test unconditionally expects the bulk export button to be visible, although RFC-214 explicitly requires its feature flag to remain off in staging until GA. The staging configuration and runtime logs confirm the flag is false and the control is intentionally not rendered, so the test expectation conflicts with the intended behavior.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 436,
+    "completion_tokens": 74,
+    "total_tokens": 510,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

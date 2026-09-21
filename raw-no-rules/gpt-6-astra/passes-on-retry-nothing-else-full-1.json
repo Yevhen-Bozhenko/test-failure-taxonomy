@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaI9wKJPBCamGUM8JKn4uzshVW48",
+  "object": "chat.completion",
+  "created": 1790004741,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The logs show that the first attempt failed and the retry passed, while the history records flakiness on 3 of 40 builds. The generic boolean assertion and lack of retained first-attempt artifacts do not distinguish an application defect from test logic, test data, or environmental causes.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 379,
+    "completion_tokens": 73,
+    "total_tokens": 452,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa8eS12TDEK1uUjWiDPWdT2ReYOR",
+  "object": "chat.completion",
+  "created": 1790004152,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The timeout tie-break requires evidence of how far the request got; the read timeout, test-only trace, and missing response do not establish whether the product received or completed it, and server logs were not collected. Server-side logs for this request, including timing relative to the test deadline and normal operation duration, would distinguish ENVIRONMENT_CONFIG from PRODUCT_DEFECT or TEST_CODE_DEFECT.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3712,
+    "completion_tokens": 121,
+    "total_tokens": 3833,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3709,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 23,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

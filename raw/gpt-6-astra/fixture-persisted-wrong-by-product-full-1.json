@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa5IxYh1kU67B9LlCfjJOvnQ3lKo",
+  "object": "chat.completion",
+  "created": 1790003944,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"PRODUCT_DEFECT\",\"reasoning\":\"The broken-setup tie-break applies: the setup call reported success, but the product persisted the newly created order incorrectly. The POST returned 201 with WELCOME10 and total 90.00, while mapper and repository logs show the discount was omitted and total 100.00 persisted, confirmed by the subsequent GET. This violates the contract requiring successful creation to persist the submitted discountCode and return a body reflecting the persisted record.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4066,
+    "completion_tokens": 100,
+    "total_tokens": 4166,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 4063,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

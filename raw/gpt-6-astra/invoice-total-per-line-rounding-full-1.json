@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa6OTSiOPudhFnxm1MOaC4706sNl",
+  "object": "chat.completion",
+  "created": 1790004012,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"PRODUCT_DEFECT\",\"reasoning\":\"The PRODUCT_DEFECT rule applies because the valid GET returned a total that violates the independent API contract: 50.005 + 49.995 must be summed at full precision and rounded once, yielding 100.00. Server logs show the product instead rounded individual amounts before summation and returned 99.99, explicitly contradicting the contract; the unchanged test’s previous green build and subsequent rounding refactor further support this classification.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4386,
+    "completion_tokens": 101,
+    "total_tokens": 4487,
+    "prompt_tokens_details": {
+      "cached_tokens": 4383,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

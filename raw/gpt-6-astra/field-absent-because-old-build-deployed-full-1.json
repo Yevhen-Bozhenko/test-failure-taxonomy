@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa4yjJM7arsEijEQ4qvz0cwspigB",
+  "object": "chat.completion",
+  "created": 1790003924,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"ENVIRONMENT_CONFIG\",\"reasoning\":\"The first elimination rule applies: the environment served a different build from the one intended. The test expected build #2110 containing the renewalReminderAt feature, but deployment logs show the rollout was aborted and the previous revision retained; /actuator/info confirms staging was running build #2109, version 2.4.0.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4036,
+    "completion_tokens": 80,
+    "total_tokens": 4116,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 4033,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

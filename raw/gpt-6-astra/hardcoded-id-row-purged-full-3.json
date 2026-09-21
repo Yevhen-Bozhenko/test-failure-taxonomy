@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa5bbZS3MxQdRsqXt8D7jNGZ8gpp",
+  "object": "chat.completion",
+  "created": 1790003963,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_DATA\",\"reasoning\":\"The missing-record rule applies: the hard-coded customer ID is a lookup reference, and the wrong artifact is the previously available record, not the test's logic. The unchanged test last passed before retention logs explicitly show CUST-1188 being purged; the subsequent request for that same customer returned CUSTOMER_NOT_FOUND. This is an inherited record removed before the run, so it is TEST_DATA.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3897,
+    "completion_tokens": 92,
+    "total_tokens": 3989,
+    "prompt_tokens_details": {
+      "cached_tokens": 3894,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

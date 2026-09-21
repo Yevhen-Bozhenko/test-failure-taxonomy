@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa6ub8A67MQzvFTaw52Pz9nMjGBJ",
+  "object": "chat.completion",
+  "created": 1790004044,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The passing-retry tie-break applies: the logs show only that attempt 1 failed and attempt 2 passed, while the history confirms that no first-attempt artifacts were retained. The boolean assertion cannot distinguish TEST_CODE_DEFECT, such as an inadequate wait, from PRODUCT_DEFECT, such as an incorrect cart badge; a first-attempt execution trace capturing the test's wait and assertion alongside the cart response and badge state would discriminate between them.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3778,
+    "completion_tokens": 105,
+    "total_tokens": 3883,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3775,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

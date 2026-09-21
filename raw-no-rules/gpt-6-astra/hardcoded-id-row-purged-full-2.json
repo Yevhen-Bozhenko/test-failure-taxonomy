@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaH2citfaYQyZmaGtB5bIj0v69s4",
+  "object": "chat.completion",
+  "created": 1790004672,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_DATA\",\"reasoning\":\"The test relies on customer CUST-1188, which the retention-job log explicitly shows was purged on September 14, before the failing request on September 19. The resulting 404 CUSTOMER_NOT_FOUND is consistent with missing test data, and the last green build predates the purge.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 498,
+    "completion_tokens": 72,
+    "total_tokens": 570,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

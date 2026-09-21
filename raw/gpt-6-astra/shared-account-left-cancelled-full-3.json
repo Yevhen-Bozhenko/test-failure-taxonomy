@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa8GY61jOrxbgd9hIFkQ0uWjKjv9",
+  "object": "chat.completion",
+  "created": 1790004128,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_DATA\",\"reasoning\":\"The stale-account-state tie-break classifies a wrong value in a consumed subscription record as TEST_DATA, even when an earlier CI run caused it. The audit log shows shared subscription SUB-70001 was cancelled during nightly #2117 before this test attempted renewal, and the API rejected renewal with 409 and state CANCELLED. The test inherited this record rather than creating it during the current run.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4038,
+    "completion_tokens": 92,
+    "total_tokens": 4130,
+    "prompt_tokens_details": {
+      "cached_tokens": 4035,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

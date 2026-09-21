@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaJ3JykYrviKjQaSX0t1ZCVZA7Bp",
+  "object": "chat.completion",
+  "created": 1790004797,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_CODE_DEFECT\",\"reasoning\":\"The test setup still omits currency after orders-service introduced that requirement in build #2113, so order creation returns 422 rather than creating an order. The setup code does not validate the response status and extracts a missing orderId, causing GET /api/v1/orders/null and the downstream 404 assertion failure.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 602,
+    "completion_tokens": 125,
+    "total_tokens": 727,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 41,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

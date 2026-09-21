@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaFwyE4As3dMOrfbWzKqryzT2yCf",
+  "object": "chat.completion",
+  "created": 1790004604,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"TEST_CODE_DEFECT\",\"reasoning\":\"AuthSupport caches a token in a static field and never checks its expiration or refreshes it. The logs show the test reused that token at age 1057 seconds despite its 900-second TTL, and the identity provider explicitly rejected it as expired, so the 401 was caused by faulty test authentication code.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 670,
+    "completion_tokens": 77,
+    "total_tokens": 747,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaJpap6UcK6X2LS2vljUf9YJF9Jw",
+  "object": "chat.completion",
+  "created": 1790004845,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The request reached the application, but its ledger aggregation took 107,418 ms, exceeding the client's 30,000 ms read timeout. This identifies the immediate cause, but the evidence does not establish whether the slowdown from the previous 1.2-second run resulted from an application defect, changed data, or database infrastructure/configuration.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 690,
+    "completion_tokens": 141,
+    "total_tokens": 831,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 52,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

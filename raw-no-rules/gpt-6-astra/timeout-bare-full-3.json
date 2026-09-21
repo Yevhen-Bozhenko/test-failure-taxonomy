@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaJm7SciYaCua0knxLWobjXI2ZEQ",
+  "object": "chat.completion",
+  "created": 1790004842,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The SocketTimeoutException and lack of an HTTP response establish only that the request did not receive a response within the configured read timeout. There is no evidence distinguishing an application slowdown from infrastructure problems or an inappropriate test timeout, so the cause cannot be confidently classified.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 313,
+    "completion_tokens": 67,
+    "total_tokens": 380,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaHotrzlv5XNdED0MqNV4yhWZz0U",
+  "object": "chat.completion",
+  "created": 1790004720,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"PRODUCT_DEFECT\",\"reasoning\":\"The contract requires summing line-item amounts at full precision and rounding HALF_UP exactly once; 50.005 + 49.995 therefore produces the expected total of 100.00. The service logs show individual amounts being rounded before summation, producing the returned 99.99 in direct violation of that contract.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 987,
+    "completion_tokens": 78,
+    "total_tokens": 1065,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

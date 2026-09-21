@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa60fGGalEKMto0ss3wm2FwXEWyL",
+  "object": "chat.completion",
+  "created": 1790003988,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The assertion and HTTP 200 response establish a disagreement, but neither establishes the correct invoice total; the test has no prior green build, and no independent contract is provided. The case remains between PRODUCT_DEFECT and TEST_CODE_DEFECT, decided by a billing contract specifying how line-item amounts are rounded and combined into the invoice total.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4016,
+    "completion_tokens": 82,
+    "total_tokens": 4098,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 4013,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

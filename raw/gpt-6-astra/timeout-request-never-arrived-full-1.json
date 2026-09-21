@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa9GloV8dW98NPpFAxyNs2N6JrGA",
+  "object": "chat.completion",
+  "created": 1790004190,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"ENVIRONMENT_CONFIG\",\"reasoning\":\"The timeout tie-break assigns ENVIRONMENT_CONFIG when there are no product frames and no server-side record that the request arrived. The trace contains only socket, HTTP-client, and test frames, while gateway logs show zero matching entries and reports-service logs record no inbound request during the failure window.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4025,
+    "completion_tokens": 71,
+    "total_tokens": 4096,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 4022,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

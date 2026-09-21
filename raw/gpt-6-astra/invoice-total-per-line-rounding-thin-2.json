@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa6eoFQ65v3ohKKj27muBcW8JPuY",
+  "object": "chat.completion",
+  "created": 1790004028,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The error message establishes only an assertion mismatch, not whether the product's total or the test's expectation is wrong. This leaves PRODUCT_DEFECT and TEST_CODE_DEFECT unresolved; an independent invoice-calculation contract specifying the correct total for this case would decide between them.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3642,
+    "completion_tokens": 69,
+    "total_tokens": 3711,
+    "prompt_tokens_details": {
+      "cached_tokens": 3639,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

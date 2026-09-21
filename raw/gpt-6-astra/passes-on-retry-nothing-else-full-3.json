@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa723qwtlWycOSVLB8bM9gDwGxmK",
+  "object": "chat.completion",
+  "created": 1790004052,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The passing-retry rule decides this case: the logs show only that attempt 1 failed and attempt 2 passed, and the history provides no retained first-attempt artifacts. The assertion establishes a symptom but cannot distinguish TEST_CODE_DEFECT from PRODUCT_DEFECT; a timestamped first-attempt execution trace showing the test's wait and assertion relative to the cart update would discriminate between an inadequate test wait and incorrect product behavior.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3778,
+    "completion_tokens": 100,
+    "total_tokens": 3878,
+    "prompt_tokens_details": {
+      "cached_tokens": 3775,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

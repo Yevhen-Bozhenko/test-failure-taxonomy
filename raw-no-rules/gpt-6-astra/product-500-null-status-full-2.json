@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQaIK5K3FuVsQ0Gn7os9GzmGNoyjP",
+  "object": "chat.completion",
+  "created": 1790004752,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"PRODUCT_DEFECT\",\"reasoning\":\"The contract explicitly permits PENDING_VERIFICATION accounts to have no status and requires the response to omit that field rather than fail. The logs show AccountService.mapAccount dereferencing the valid null status, causing the 500; this directly identifies an application defect, consistent with the status-mapping refactor introduced after the last green build.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 782,
+    "completion_tokens": 80,
+    "total_tokens": 862,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}

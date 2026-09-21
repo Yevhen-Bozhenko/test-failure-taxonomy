@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EQa6opBpfMnEsOMnqJsxSFI9puUJT",
+  "object": "chat.completion",
+  "created": 1790004038,
+  "model": "gpt-6-astra",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"class\":\"INSUFFICIENT_DATA\",\"reasoning\":\"The error message establishes only that the asserted invoice total differed from the actual value; it does not establish which value is correct. The case sits between PRODUCT_DEFECT and TEST_CODE_DEFECT, and an independent contract specifying the correct total for this invoice would decide whether the product's answer or the test's expectation is wrong.\"}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3642,
+    "completion_tokens": 80,
+    "total_tokens": 3722,
+    "prompt_tokens_details": {
+      "cached_tokens": 3639,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": null
+}
