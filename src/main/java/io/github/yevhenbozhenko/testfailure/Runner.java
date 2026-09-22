@@ -33,9 +33,10 @@ import java.util.stream.Stream;
  */
 public final class Runner {
 
-    private static final String ANTHROPIC_MODEL = "claude-opus-5";
-    private static final String OPENAI_MODEL = "gpt-6-astra";
-    private static final int RUNS = 3;
+    // Not private, so the Scorer uses the same values.
+    static final String ANTHROPIC_MODEL = "claude-opus-5";
+    static final String OPENAI_MODEL = "gpt-6-astra";
+    static final int RUNS = 3;
 
     private static final Set<String> CASE_FILES =
             Set.of("meta.json", "evidence-full.json", "evidence-thin.json");
