@@ -6,17 +6,17 @@ as tables.
 
 ## What produced these numbers
 
-| Item          | Value                                                                            |
-| ------------- | -------------------------------------------------------------------------------- |
-| Models        | `claude-opus-5` and `gpt-6-astra` (each saved reply names its model)             |
-| Temperature   | Not set; neither model accepts one                                               |
-| Cases         | 21 cases in `cases/`, 27 evidence files (21 full, 6 with only the error message) |
-| Cases are     | Constructed, not taken from real test runs                                       |
-| Answers       | 324: 2 models × with and without the rules × 27 evidence files × 3 runs          |
-| Answers saved | Commit `9117f38`, 2026-09-21, in `raw/` and `raw-no-rules/`                      |
-| Scorer        | Commit `4376bfe`                                                                 |
-| Scoring rule  | The last `{"class": ...}` in a reply is its answer                               |
-| Labels        | Set before the run, none changed after it                                        |
+| Item          | Value                                                                                       |
+| ------------- | ------------------------------------------------------------------------------------------- |
+| Models        | `claude-opus-5` and `gpt-6-astra` (each saved reply names its model)                        |
+| Temperature   | Not set; neither model accepts one                                                          |
+| Cases         | 21 cases in `cases/`, 27 evidence files (21 full, 6 with only the error message)            |
+| Cases are     | Constructed, not taken from real test runs; drafted with AI help                            |
+| Answers       | 324: 2 models × with and without the rules × 27 evidence files × 3 runs                     |
+| Answers saved | Commit `9117f38`, 2026-09-21, in `raw/` and `raw-no-rules/`                                 |
+| Scorer        | Commit `4376bfe`                                                                            |
+| Scoring rule  | The last `{"class": ...}` in a reply is its answer                                          |
+| Labels        | Set before the run, none changed after it                                                   |
 
 ## The replies
 
@@ -133,6 +133,37 @@ The model's own reasoning, from the first differing reply of each. The full repl
 > establish which identifier the test should use; the deciding evidence is the fixture or seed
 > definition recording the intended customer identifier.
 
+## "Not enough evidence" answers name what would decide
+
+With the rules, on full evidence, every INSUFFICIENT_DATA answer: 21 of 21, from both models.
+This table was checked by reading each reply, not by the scorer. The phrases are copied from the
+replies in `raw/`. It checks only the evidence named; the rules also ask for the two classes the
+case sits between, which is not checked here.
+
+| Case                                     | Model         | Run | The evidence the model said would decide                                                                               |
+| ---------------------------------------- | ------------- | --- | ---------------------------------------------------------------------------------------------------------------------- |
+| `invoice-total-no-independent-statement` | claude-opus-5 | 1   | "the billing rounding contract or spec for invoice totals"                                                             |
+| `invoice-total-no-independent-statement` | claude-opus-5 | 2   | "the billing contract or spec for invoice-total rounding"                                                              |
+| `invoice-total-no-independent-statement` | claude-opus-5 | 3   | "the billing rounding specification for line-item totals"                                                              |
+| `invoice-total-no-independent-statement` | gpt-6-astra   | 1   | "a billing contract specifying how line-item amounts are rounded and combined into the invoice total"                  |
+| `invoice-total-no-independent-statement` | gpt-6-astra   | 2   | "the billing contract specifying how these line-item amounts must be rounded and totaled"                              |
+| `invoice-total-no-independent-statement` | gpt-6-astra   | 3   | "the invoice calculation and rounding contract specifying how these line-item amounts determine the total"             |
+| `passes-on-retry-nothing-else`           | claude-opus-5 | 1   | "the retained attempt-1 artifacts (trace, HTTP exchange, or test code)"                                                |
+| `passes-on-retry-nothing-else`           | claude-opus-5 | 2   | "the attempt-1 logs, request/response or test code"                                                                    |
+| `passes-on-retry-nothing-else`           | claude-opus-5 | 3   | "the retained attempt-1 trace and server log for that run"                                                             |
+| `passes-on-retry-nothing-else`           | gpt-6-astra   | 1   | "a first-attempt execution trace capturing the test's wait and assertion alongside the cart response and badge state"  |
+| `passes-on-retry-nothing-else`           | gpt-6-astra   | 2   | "an attempt-1 execution trace showing the test's wait and assertion timing alongside the product's cart-badge updates" |
+| `passes-on-retry-nothing-else`           | gpt-6-astra   | 3   | "a timestamped first-attempt execution trace showing the test's wait and assertion relative to the cart update"        |
+| `timeout-bare`                           | claude-opus-5 | 1   | "the server-side log for this request"                                                                                 |
+| `timeout-bare`                           | claude-opus-5 | 2   | "the server-side log for GET /api/v1/reports/revenue?period=2026-08"                                                   |
+| `timeout-bare`                           | claude-opus-5 | 3   | "the server-side log for that request"                                                                                 |
+| `timeout-bare`                           | gpt-6-astra   | 1   | "Server-side logs for this request, including timing relative to the test deadline and normal operation duration"      |
+| `timeout-bare`                           | gpt-6-astra   | 2   | "Server-side logs for this request, including its timing"                                                              |
+| `timeout-bare`                           | gpt-6-astra   | 3   | "Server-side logs for this request, including arrival and completion timing"                                           |
+| `hardcoded-id-typo-never-existed`        | gpt-6-astra   | 1   | "the fixture or seed definition recording the intended customer identifier"                                            |
+| `hardcoded-id-typo-never-existed`        | gpt-6-astra   | 2   | "the fixture or seed definition recording which customer identifier the test should use"                               |
+| `hardcoded-id-typo-never-existed`        | gpt-6-astra   | 3   | "the fixture or seed definition recording which customer identifier the test should have found"                        |
+
 ## To produce it again
 
 Free, no API keys needed. From the project folder:
@@ -142,4 +173,5 @@ mvn -q compile exec:java \
   -Dexec.mainClass=io.github.yevhenbozhenko.testfailure.Scorer
 ```
 
-It prints the same numbers as plain text.
+It prints the same numbers as plain text, except the "not enough evidence" table, which was
+checked by reading the replies in `raw/`.
