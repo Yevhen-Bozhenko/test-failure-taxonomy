@@ -96,3 +96,9 @@ mvn -q compile exec:java \
 holds all the evidence, `evidence-thin.json` (optional) holds only the error message, and
 `meta.json` holds the expected answer. The runner never reads `meta.json`, so the models never
 see the label.
+
+## License
+
+- The taxonomy, findings, results, cases and prompts (`*.md`, `cases/`, `prompts/`):
+  [CC BY 4.0](LICENSE-CC-BY-4.0). Reuse them freely, including commercially, with credit.
+- The code (`src/`, `pom.xml`): [MIT](LICENSE).
