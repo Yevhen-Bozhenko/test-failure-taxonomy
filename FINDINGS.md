@@ -247,8 +247,8 @@ changing the rules now would mean they were no longer the rules the models were 
 
 ## What did not separate
 
-Six files carry only the error message. Both models answered INSUFFICIENT_DATA to all 36 of
-those replies, with and without the rules.
+Six files carry only the error message. Both models answered INSUFFICIENT_DATA every time: 36
+replies with the rules and 36 without, 72 in all.
 
 That means: given only an error message, neither model guessed. It does not mean the models do
 not overclaim. A bare error message is the easiest case to decline, because there is nothing to

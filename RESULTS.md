@@ -6,17 +6,19 @@ as tables.
 
 ## What produced these numbers
 
-| Item          | Value                                                                                       |
-| ------------- | ------------------------------------------------------------------------------------------- |
-| Models        | `claude-opus-5` and `gpt-6-astra` (each saved reply names its model)                        |
-| Temperature   | Not set; neither model accepts one                                                          |
-| Cases         | 21 cases in `cases/`, 27 evidence files (21 full, 6 with only the error message)            |
-| Cases are     | Constructed, not taken from real test runs; drafted with AI help                            |
-| Answers       | 324: 2 models × with and without the rules × 27 evidence files × 3 runs                     |
-| Answers saved | Commit `9117f38`, 2026-09-21, in `raw/` and `raw-no-rules/`                                 |
-| Scorer        | Commit `4376bfe`                                                                            |
-| Scoring rule  | The last `{"class": ...}` in a reply is its answer                                          |
-| Labels        | Set before the run, none changed after it                                                   |
+| Item          | Value                                                                                   |
+| ------------- | --------------------------------------------------------------------------------------- |
+| Models        | `claude-opus-5` and `gpt-6-astra` (each saved reply names its model)                    |
+| Temperature   | Not set; neither model accepts one                                                      |
+| Cases         | 21 cases in `cases/`, 27 evidence files (21 full, 6 with only the error message)        |
+| Cases are     | Constructed, not taken from real test runs; drafted with AI help                        |
+| How asked     | The vendors' APIs, not their chat apps; every call on its own, with no earlier messages |
+| Each call     | One evidence file, in the prompt from `prompts/`                                        |
+| Answers       | 324: 2 models × with and without the rules × 27 evidence files × 3 runs                 |
+| Answers saved | Commit `9117f38`, 2026-09-21, in `raw/` and `raw-no-rules/`                             |
+| Scorer        | Commit `4376bfe`                                                                        |
+| Scoring rule  | The last `{"class": ...}` in a reply is its answer                                      |
+| Labels        | Set before the run, none changed after it                                               |
 
 ## The replies
 
@@ -41,6 +43,7 @@ Both models together.
 | Same answer in all 3 runs                      | 54 of 54   | 52 of 54   |
 | Matched what really broke (see note)           | 117 of 162 | 114 of 162 |
 
+- **Each column counts one condition,** so the two columns together cover all 324 answers.
 - **The two models reach the same conclusion:** each model's most common answer, compared case by
   case.
 - **Matched the expected answer:** the answer the rules allow for that evidence.

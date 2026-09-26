@@ -7,7 +7,8 @@ the evidence a triaging engineer actually has: the error, stack trace, logs, req
 response, the test code, its history, and the contract. It was checked by asking two AI models,
 `claude-opus-5` and `gpt-6-astra`, to classify 21 failures with and without the rules.
 
-**Scope:** 21 constructed cases, drafted with AI help; two models, one run date. Read the results
+**Scope:** 21 constructed cases (27 evidence files: 21 full, 6 with only the error message),
+drafted with AI help; two models, one run date. Read the results
 as examples, not rates. See `FINDINGS.md`.
 
 ## Start here
@@ -17,7 +18,7 @@ as examples, not rates. See `FINDINGS.md`.
 | [`TAXONOMY.md`](TAXONOMY.md) | The classes and the rules. This is the part to reuse                                   |
 | [`FINDINGS.md`](FINDINGS.md) | What the check showed: where the AI confused the test with the product, and why        |
 | [`RESULTS.md`](RESULTS.md)   | The numbers, and every answer that differed from the expected one                      |
-| [`cases/`](cases)            | 21 labelled failures, for testing a model or training people                           |
+| [`cases/`](cases)            | 21 labelled failures, 27 evidence files, for testing a model or training people        |
 | [`prompts/`](prompts)        | The exact prompts, with the rules (`classify.md`) and without (`classify-no-rules.md`) |
 
 ## The five classes
@@ -96,6 +97,11 @@ mvn -q compile exec:java \
 holds all the evidence, `evidence-thin.json` (optional) holds only the error message, and
 `meta.json` holds the expected answer. The runner never reads `meta.json`, so the models never
 see the label.
+
+## How to cite
+
+Yevhen Bozhenko (2026). *test-failure-taxonomy: a taxonomy of test failure causes, with decision
+rules based on evidence.* <https://github.com/Yevhen-Bozhenko/test-failure-taxonomy>
 
 ## License
 
